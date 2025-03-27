@@ -3,6 +3,7 @@ import 'package:docdoc/src/core/utils/functions/check_if_onboarding_is_visited.d
 import 'package:docdoc/src/core/utils/functions/check_if_user_logged_in.dart';
 import 'package:docdoc/src/docdoc_app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
@@ -12,5 +13,7 @@ Future<void> main() async {
   await ScreenUtil.ensureScreenSize();
   await checkIfOnboardingIsVisited();
   await checkIfUserLoggedIn();
-  runApp(const DocdocApp());
+  runApp(
+    const ProviderScope(child: DocdocApp()),
+  );
 }

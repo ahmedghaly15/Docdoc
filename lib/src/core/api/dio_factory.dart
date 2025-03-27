@@ -1,7 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
 import 'package:docdoc/src/core/helpers/constants.dart';
 import 'package:docdoc/src/core/helpers/shared_pref_helper.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+final dioProvider = Provider<Dio>((ref) => DioFactory.getDio());
 
 class DioFactory {
   /// private constructor as I don't want to allow creating an instance of this class
@@ -17,15 +21,15 @@ class DioFactory {
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
-      addDioHeaders();
-      addDioInterceptor();
+      _addDioHeaders();
+      _addDioInterceptor();
       return dio!;
     } else {
       return dio!;
     }
   }
 
-  static void addDioHeaders() async {
+  static void _addDioHeaders() async {
     dio?.options.headers = {
       'Accept': 'application/json',
       'Authorization':
@@ -39,7 +43,7 @@ class DioFactory {
     };
   }
 
-  static void addDioInterceptor() {
+  static void _addDioInterceptor() {
     dio?.interceptors.add(
       PrettyDioLogger(
         requestBody: true,

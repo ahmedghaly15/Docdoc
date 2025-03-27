@@ -23,9 +23,6 @@ mixin _$ApiErrorModel {
   int? get code => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
-  /// Serializes this ApiErrorModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   /// Create a copy of ApiErrorModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -114,7 +111,7 @@ class __$$ApiErrorModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class _$ApiErrorModelImpl implements _ApiErrorModel {
   const _$ApiErrorModelImpl({this.code, this.message});
 
@@ -151,13 +148,6 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
   @pragma('vm:prefer-inline')
   _$$ApiErrorModelImplCopyWith<_$ApiErrorModelImpl> get copyWith =>
       __$$ApiErrorModelImplCopyWithImpl<_$ApiErrorModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ApiErrorModelImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _ApiErrorModel implements ApiErrorModel {

@@ -30,3 +30,7 @@ extension AppNavigator on BuildContext {
 extension StringExtension on String? {
   bool get isNullOrEmpty => this == null || this == '';
 }
+
+extension RequestFocusOnFocusNode on BuildContext {
+  void requestFocus(FocusNode node) => FocusScope.of(this).requestFocus(node);
+}

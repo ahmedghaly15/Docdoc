@@ -11,9 +11,3 @@ _$ApiErrorModelImpl _$$ApiErrorModelImplFromJson(Map<String, dynamic> json) =>
       code: (json['code'] as num?)?.toInt(),
       message: json['message'] as String?,
     );
-
-Map<String, dynamic> _$$ApiErrorModelImplToJson(_$ApiErrorModelImpl instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'message': instance.message,
-    };

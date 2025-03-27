@@ -1,9 +1,9 @@
 part of '../../../dependency_injection.dart';
 
 void setupDIForRepos() {
-  getIt.registerLazySingleton<LoginRepo>(
-    () => LoginRepoImpl(getIt.get<ApiService>()),
-  );
+  // getIt.registerLazySingleton<LoginRepo>(
+  //   () => LoginRepo(getIt.get<ApiService>()),
+  // );
 
   getIt.registerLazySingleton<RegisterRepo>(
     () => RegisterRepoImpl(getIt.get<ApiService>()),
