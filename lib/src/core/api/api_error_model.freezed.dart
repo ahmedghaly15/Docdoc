@@ -23,8 +23,12 @@ mixin _$ApiErrorModel {
   int? get code => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
+  /// Serializes this ApiErrorModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApiErrorModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApiErrorModelCopyWith<ApiErrorModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$ApiErrorModelCopyWithImpl<$Res, $Val extends ApiErrorModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApiErrorModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$ApiErrorModelImplCopyWithImpl<$Res>
       _$ApiErrorModelImpl _value, $Res Function(_$ApiErrorModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiErrorModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
             (identical(other.message, message) || other.message == message));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, code, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiErrorModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiErrorModelImplCopyWith<_$ApiErrorModelImpl> get copyWith =>
@@ -161,8 +171,11 @@ abstract class _ApiErrorModel implements ApiErrorModel {
   int? get code;
   @override
   String? get message;
+
+  /// Create a copy of ApiErrorModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApiErrorModelImplCopyWith<_$ApiErrorModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

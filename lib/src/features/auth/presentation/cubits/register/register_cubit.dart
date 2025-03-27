@@ -1,11 +1,12 @@
-import 'package:docdoc/src/features/auth/data/models/register/register_request_body.dart';
-import 'package:docdoc/src/features/auth/data/repos/register_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'register_state.dart';
+import 'package:docdoc/src/features/auth/data/models/register/register_request_body.dart';
+import 'package:docdoc/src/features/auth/data/repos/register_repo.dart';
+
 part 'register_cubit.freezed.dart';
+part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   final RegisterRepo _registerRepo;
@@ -43,8 +44,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     response.when(
       success: (registerResponse) =>
           emit(RegisterState.success(registerResponse)),
-      failure: (error) =>
-          emit(RegisterState.error(error: error.apiErrorModel.message ?? '')),
+      failure: (error) => emit(RegisterState.error(error: error.message ?? '')),
     );
   }
 }
