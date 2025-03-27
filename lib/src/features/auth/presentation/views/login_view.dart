@@ -8,7 +8,6 @@ import 'widgets/auth_title.dart';
 import 'widgets/login/dont_have_acc.dart';
 import 'widgets/login/login_consumer_button.dart';
 import 'widgets/login/login_form.dart';
-import 'widgets/password_validations.dart';
 import 'widgets/terms_and_privacy_policy_text.dart';
 
 class LoginView extends StatelessWidget {
@@ -32,8 +31,6 @@ class LoginView extends StatelessWidget {
                     ),
                     MySizedBox.height36,
                     LoginForm(),
-                    MySizedBox.height12,
-                    PasswordValidations(),
                     MySizedBox.height32,
                     LoginConsumerButton(),
                   ],
