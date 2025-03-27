@@ -1,7 +1,16 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 
-/// A utility to observe Riverpod providers.
+/// Custom logger instance with pretty output.
+final Logger _logger = Logger(
+  printer: PrettyPrinter(
+    methodCount: 0, // Hide method calls in logs
+    colors: true, // Enable colors
+    printEmojis: true, // Enable emojis
+  ),
+);
+
+/// Observes Riverpod providers and logs their lifecycle.
 class AppProviderObserver extends ProviderObserver {
   @override
   void didAddProvider(
@@ -9,7 +18,7 @@ class AppProviderObserver extends ProviderObserver {
     Object? value,
     ProviderContainer container,
   ) {
-    debugPrint('Provider $provider was initialized with $value');
+    _logger.i('✅ Provider Added: ${_getProviderName(provider)} → $value');
   }
 
   @override
@@ -17,7 +26,7 @@ class AppProviderObserver extends ProviderObserver {
     ProviderBase<Object?> provider,
     ProviderContainer container,
   ) {
-    debugPrint('Provider $provider was disposed');
+    _logger.w('❌ Provider Disposed: ${_getProviderName(provider)}');
   }
 
   @override
@@ -27,7 +36,9 @@ class AppProviderObserver extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
-    debugPrint('Provider $provider updated from $previousValue to $newValue');
+    _logger.d(
+      '🔄 Provider Updated: ${_getProviderName(provider)} → $newValue (was $previousValue)',
+    );
   }
 
   @override
@@ -37,6 +48,14 @@ class AppProviderObserver extends ProviderObserver {
     StackTrace stackTrace,
     ProviderContainer container,
   ) {
-    debugPrint('Provider $provider threw $error at $stackTrace');
+    _logger.e(
+      '❗ Provider Error: ${_getProviderName(provider)} → $error',
+      stackTrace: stackTrace,
+    );
+  }
+
+  /// Gets a human-readable provider name.
+  String _getProviderName(ProviderBase<Object?> provider) {
+    return provider.name ?? provider.runtimeType.toString();
   }
 }

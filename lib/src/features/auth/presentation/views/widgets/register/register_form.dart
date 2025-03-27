@@ -198,13 +198,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 AuthHelper.validatePhoneField(value: val),
           ),
           SizedBox(height: 24.h),
-          PasswordValidations(
-            hasLowercase: hasLowercase,
-            hasUppercase: hasUppercase,
-            hasSpecialCharacters: hasSpecialCharacters,
-            hasNumber: hasNumber,
-            hasMinLength: hasMinLength,
-          ),
+          const PasswordValidations(),
           SizedBox(height: 32.h),
           PrimaryButton(
             onPressed: () => validateAndDoRegister(context),
