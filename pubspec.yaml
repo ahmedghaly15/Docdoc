@@ -12,11 +12,11 @@ dependencies:
 
 
   # Simple direct Service Locator that allows to access the concrete implementation from everywhere
-  get_it: ^7.6.4
+  get_it: ^8.0.3
   # State management
-  flutter_bloc: ^8.1.5
+  flutter_bloc: ^9.1.0
   # Code generator (mainly used with Cubit & retrofit)
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^3.0.0
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_annotation: ^4.9.0
   # Networking
@@ -33,7 +33,7 @@ dependencies:
   # A flutter plugin for adapting screen and font size.Guaranteed to look good on different models
   flutter_screenutil: ^5.9.0
   # Updating app's launcher icon
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.3
   # Flutter plugin for reading and writing simple key-value pairs for cache
   shared_preferences: ^2.0.20
   # Flutter library to load and cache network images.
@@ -45,15 +45,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   # Recommended lints to encourage good coding practices
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
   # A build system for Dart code generation and modular compilation.
   build_runner: ^2.4.11
   # Networking
-  retrofit_generator: ^8.1.0
+  retrofit_generator: ^9.1.9
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_serializable: ^6.8.0
   # Code generator (mainly used with Cubit & retrofit)
-  freezed: ^2.5.2
+  freezed: ^3.0.4
 
 
 
