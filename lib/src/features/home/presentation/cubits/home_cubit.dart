@@ -1,6 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:docdoc/src/features/home/data/repos/home_repo.dart';
 import 'package:docdoc/src/features/home/presentation/cubits/home_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
@@ -13,7 +14,7 @@ class HomeCubit extends Cubit<HomeState> {
     response.when(
       success: (data) => emit(HomeState.getAllSpecializationSuccess(data)),
       failure: (error) => emit(
-        HomeState.getAllSpecializationError(error.apiErrorModel.message ?? ''),
+        HomeState.getAllSpecializationError(error.message ?? ''),
       ),
     );
   }

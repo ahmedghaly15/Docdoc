@@ -96,6 +96,9 @@ class _$HomeStateCopyWithImpl<T, $Res, $Val extends HomeState<T>>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -112,6 +115,9 @@ class __$$InitialImplCopyWithImpl<T, $Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -241,6 +247,9 @@ class __$$GetAllSpecializationLoadingImplCopyWithImpl<T, $Res>
       _$GetAllSpecializationLoadingImpl<T> _value,
       $Res Function(_$GetAllSpecializationLoadingImpl<T>) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -376,6 +385,8 @@ class __$$GetAllSpecializationSuccessImplCopyWithImpl<T, $Res>
       $Res Function(_$GetAllSpecializationSuccessImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -415,7 +426,9 @@ class _$GetAllSpecializationSuccessImpl<T>
   @override
   int get hashCode => Object.hash(runtimeType, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllSpecializationSuccessImplCopyWith<T,
@@ -516,7 +529,10 @@ abstract class GetAllSpecializationSuccess<T> implements HomeState<T> {
       _$GetAllSpecializationSuccessImpl<T>;
 
   GetAllSpecializationResponse get data;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllSpecializationSuccessImplCopyWith<T,
           _$GetAllSpecializationSuccessImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
@@ -541,6 +557,8 @@ class __$$GetAllSpecializationErrorImplCopyWithImpl<T, $Res>
       $Res Function(_$GetAllSpecializationErrorImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -580,7 +598,9 @@ class _$GetAllSpecializationErrorImpl<T>
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllSpecializationErrorImplCopyWith<T,
@@ -680,7 +700,10 @@ abstract class GetAllSpecializationError<T> implements HomeState<T> {
       _$GetAllSpecializationErrorImpl<T>;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllSpecializationErrorImplCopyWith<T,
           _$GetAllSpecializationErrorImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
