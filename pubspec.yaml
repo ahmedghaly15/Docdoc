@@ -16,7 +16,7 @@ dependencies:
   # State management
   flutter_bloc: ^9.1.0
   # Code generator (mainly used with Cubit & retrofit)
-  freezed_annotation: ^3.0.0
+  freezed_annotation: ^2.4.4
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_annotation: ^4.9.0
   # Networking
@@ -50,19 +50,19 @@ dev_dependencies:
   # Recommended lints to encourage good coding practices
   flutter_lints: ^5.0.0
   # A build system for Dart code generation and modular compilation.
-  build_runner: ^2.4.11
+  build_runner:
   # Networking
   retrofit_generator: ^9.1.9
+  # Code generator (mainly used with Bloc)
+  freezed: ^2.5.7
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^6.8.0
-  # Code generator (mainly used with Cubit & retrofit)
-  freezed: ^3.0.4
+  json_serializable: ^6.9.0
   # Code generation for riverpod
-  riverpod_generator: ^2.6.5
+  riverpod_generator: ^2.4.4
   # Custom Lint rules are a powerful way to improve the maintainability of a project
-  custom_lint: ^0.7.5
+  custom_lint:
   # A developer tool for users of Riverpod, designed to help stop common issues and simplify repetitive tasks.
-  riverpod_lint: ^2.6.5
+  riverpod_lint: ^2.4.0
 
 
 
