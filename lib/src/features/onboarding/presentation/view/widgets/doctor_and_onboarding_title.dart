@@ -1,9 +1,11 @@
-import 'package:docdoc/src/config/themes/app_colors.dart';
-import 'package:docdoc/src/config/themes/app_text_styles.dart';
-import 'package:docdoc/src/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../../config/themes/app_colors.dart';
+import '../../../../../config/themes/app_text_styles.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_strings.dart';
 
 class DoctorAndOnboardingTitle extends StatelessWidget {
   const DoctorAndOnboardingTitle({super.key});
@@ -18,7 +20,7 @@ class DoctorAndOnboardingTitle extends StatelessWidget {
             gradient: LinearGradient(
               colors: [
                 Colors.white,
-                Colors.white.withOpacity(0.0),
+                Colors.white.withAlpha(0),
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
@@ -32,7 +34,7 @@ class DoctorAndOnboardingTitle extends StatelessWidget {
           right: 0,
           left: 0,
           child: Text(
-            "Best Doctor\nAppointment App",
+            AppStrings.onboardingTitle,
             style: AppTextStyles.font32Bold.copyWith(
               color: AppColors.primaryColor,
               height: 1.4.h,
