@@ -40,6 +40,9 @@ dependencies:
   cached_network_image: ^3.3.1
   # Provides API to store data in secure storage
   flutter_secure_storage: ^9.2.2
+  # State management
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +57,12 @@ dev_dependencies:
   json_serializable: ^6.8.0
   # Code generator (mainly used with Cubit & retrofit)
   freezed: ^3.0.4
+  # Code generation for riverpod
+  riverpod_generator: ^2.6.5
+  # Custom Lint rules are a powerful way to improve the maintainability of a project
+  custom_lint: ^0.7.5
+  # A developer tool for users of Riverpod, designed to help stop common issues and simplify repetitive tasks.
+  riverpod_lint: ^2.6.5
 
 
 
