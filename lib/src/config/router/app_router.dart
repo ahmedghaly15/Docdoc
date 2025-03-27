@@ -1,15 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:docdoc/dependency_injection.dart';
 import 'package:docdoc/src/config/router/routes.dart';
 import 'package:docdoc/src/config/themes/app_text_styles.dart';
-import 'package:docdoc/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:docdoc/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:docdoc/src/features/auth/presentation/views/login_view.dart';
 import 'package:docdoc/src/features/auth/presentation/views/register_view.dart';
 import 'package:docdoc/src/features/home/presentation/cubits/home_cubit.dart';
 import 'package:docdoc/src/features/home/presentation/views/home_view.dart';
 import 'package:docdoc/src/features/onboarding/presentation/view/onboarding_view.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
@@ -21,10 +21,7 @@ class AppRouter {
 
       case Routes.loginRoute:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<LoginCubit>(
-            create: (context) => getIt.get<LoginCubit>(),
-            child: const LoginView(),
-          ),
+          builder: (_) => const LoginView(),
         );
 
       case Routes.registerRoute:

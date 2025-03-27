@@ -8,6 +8,7 @@ import '../../../../config/themes/app_text_styles.dart';
 import '../../../../core/helpers/constants.dart';
 import '../../../../core/helpers/shared_pref_helper.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/my_sized_box.dart';
 import '../../../../core/widgets/primary_button.dart';
 import 'widgets/app_logo_and_name.dart';
 import 'widgets/doctor_and_onboarding_title.dart';
@@ -25,7 +26,7 @@ class OnboardingView extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 const AppLogoAndName(),
-                SizedBox(height: 40.h),
+                MySizedBox.height40,
                 const DoctorAndOnboardingTitle(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32.w),

@@ -1,7 +1,9 @@
-import 'package:docdoc/src/config/themes/app_colors.dart';
-import 'package:docdoc/src/config/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../config/themes/app_colors.dart';
+import '../../../../../config/themes/app_text_styles.dart';
+import '../../../../../core/utils/app_strings.dart';
 
 class TermsAndPrivacyPolicyText extends StatelessWidget {
   const TermsAndPrivacyPolicyText({super.key});
@@ -13,22 +15,22 @@ class TermsAndPrivacyPolicyText extends StatelessWidget {
       text: TextSpan(
         children: <TextSpan>[
           TextSpan(
-            text: "By logging, you agree to our ",
+            text: "${AppStrings.byLoggingYouAgree} ",
             style:
                 AppTextStyles.font12Medium.copyWith(color: AppColors.darkGrey),
           ),
           TextSpan(
-            text: 'Terms & Conditions',
+            text: AppStrings.termsAndConditions,
             style:
                 AppTextStyles.font12Medium.copyWith(color: AppColors.darkBlue),
           ),
           TextSpan(
-            text: ' and ',
+            text: ' ${AppStrings.and} ',
             style:
                 AppTextStyles.font12Medium.copyWith(color: AppColors.darkGrey),
           ),
           TextSpan(
-            text: 'Privacy Policy',
+            text: AppStrings.privacyPolicy,
             style: AppTextStyles.font12Medium.copyWith(
               color: AppColors.darkBlue,
               height: 1.5.h,

@@ -21,7 +21,7 @@ final passControllerProvider =
   return TextEditingController();
 });
 
-final passFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
+final passFocusNodeProvider = Provider<FocusNode>((ref) {
   return FocusNode();
 });
 

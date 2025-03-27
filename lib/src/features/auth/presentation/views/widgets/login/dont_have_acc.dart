@@ -1,8 +1,11 @@
-import 'package:docdoc/src/config/router/routes.dart';
-import 'package:docdoc/src/config/themes/app_colors.dart';
-import 'package:docdoc/src/config/themes/app_text_styles.dart';
-import 'package:docdoc/src/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
+
+import 'package:docdoc/src/core/helpers/extensions.dart';
+
+import '../../../../../../config/router/routes.dart';
+import '../../../../../../config/themes/app_colors.dart';
+import '../../../../../../config/themes/app_text_styles.dart';
+import '../../../../../../core/utils/app_strings.dart';
 
 class DontHaveAcc extends StatelessWidget {
   const DontHaveAcc({super.key});
@@ -13,14 +16,14 @@ class DontHaveAcc extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          "Don't have an account?",
+          AppStrings.dontHavAcc,
           style: AppTextStyles.font12SemiBold.copyWith(
             color: AppColors.darkBlue,
           ),
         ),
         TextButton(
           onPressed: () => context.pushNamed(routeName: Routes.registerRoute),
-          child: const Text('Sign Up'),
+          child: const Text(AppStrings.signUp),
         ),
       ],
     );
