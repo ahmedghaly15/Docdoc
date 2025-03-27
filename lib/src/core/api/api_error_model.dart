@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'api_error_model.g.dart';
 part 'api_error_model.freezed.dart';
 
-@freezed
+@Freezed(toJson: false, fromJson: true)
 class ApiErrorModel with _$ApiErrorModel {
   const factory ApiErrorModel({
     int? code,

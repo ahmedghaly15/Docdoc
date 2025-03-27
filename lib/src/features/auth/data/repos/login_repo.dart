@@ -1,20 +1,24 @@
-import 'package:docdoc/src/core/api/api_result.dart';
-import 'package:docdoc/src/core/api/api_service.dart';
-import 'package:docdoc/src/core/utils/functions/execute_and_handle_errors.dart';
-import 'package:docdoc/src/features/auth/data/models/login/login_request_body.dart';
-import 'package:docdoc/src/features/auth/data/models/login/login_response.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract class LoginRepo {
-  Future<ApiResult<LoginResponse>> login(LoginRequestBody loginRequestBody);
-}
+import '../../../../core/api/api_result.dart';
+import '../../../../core/utils/functions/execute_and_handle_errors.dart';
+import '../api/login_api_service.dart';
+import '../models/login/login_request_body.dart';
+import '../models/login/login_response.dart';
 
-class LoginRepoImpl implements LoginRepo {
-  final ApiService _apiService;
+final loginRepoProvider = Provider.autoDispose<LoginRepo>((ref) {
+  final loginApiService = ref.watch(loginApiServiceProvider);
+  return LoginRepo(loginApiService);
+});
 
-  const LoginRepoImpl(this._apiService);
+class LoginRepo {
+  final LoginApiService _apiService;
 
-  @override
-  Future<ApiResult<LoginResponse>> login(LoginRequestBody loginRequestBody) {
+  LoginRepo(this._apiService);
+
+  Future<ApiResult<LoginResponse>> login(
+    LoginRequestBody loginRequestBody,
+  ) {
     return executeAndHandleErrors<LoginResponse>(
       () async => await _apiService.login(loginRequestBody),
     );
