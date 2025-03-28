@@ -1,21 +1,14 @@
-import 'package:docdoc/src/core/api/api_result.dart';
-import 'package:docdoc/src/core/api/api_service.dart';
-import 'package:docdoc/src/core/utils/functions/execute_and_handle_errors.dart';
-import 'package:docdoc/src/features/auth/data/models/register/register_request_body.dart';
-import 'package:docdoc/src/features/auth/data/models/register/register_response.dart';
+import '../../../../core/api/api_result.dart';
+import '../../../../core/utils/functions/execute_and_handle_errors.dart';
+import '../api/register_api_service.dart';
+import '../models/register/register_request_body.dart';
+import '../models/register/register_response.dart';
 
-abstract class RegisterRepo {
-  Future<ApiResult<RegisterResponse>> register(
-    RegisterRequestBody registerRequestBody,
-  );
-}
+class RegisterRepo {
+  final RegisterApiService _apiService;
 
-class RegisterRepoImpl implements RegisterRepo {
-  final ApiService _apiService;
+  const RegisterRepo(this._apiService);
 
-  const RegisterRepoImpl(this._apiService);
-
-  @override
   Future<ApiResult<RegisterResponse>> register(
     RegisterRequestBody registerRequestBody,
   ) {
