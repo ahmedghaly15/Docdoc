@@ -1,10 +1,11 @@
-import 'package:docdoc/src/config/router/app_router.dart';
-import 'package:docdoc/src/config/router/routes.dart';
-import 'package:docdoc/src/config/themes/app_theme.dart';
-import 'package:docdoc/src/core/helpers/constants.dart';
-import 'package:docdoc/src/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'config/router/app_router.dart';
+import 'config/router/routes.dart';
+import 'config/themes/app_theme.dart';
+import 'core/helpers/constants.dart';
+import 'core/utils/app_strings.dart';
 
 class DocdocApp extends StatelessWidget {
   const DocdocApp({super.key});
@@ -20,8 +21,8 @@ class DocdocApp extends StatelessWidget {
         title: AppStrings.appTitle,
         theme: AppTheme.light,
         initialRoute: isOnboardingVisited
-            ? (isUserLoggedIn ? Routes.homeRoute : Routes.loginRoute)
-            : Routes.onboardingRoute,
+            ? (isUserLoggedIn ? Routes.home : Routes.login)
+            : Routes.onboarding,
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );

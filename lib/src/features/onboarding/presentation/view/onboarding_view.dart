@@ -56,7 +56,7 @@ class OnboardingView extends StatelessWidget {
 
   void _markOnboardingAsVisitedAndGoLogin(BuildContext context) {
     SharedPrefHelper.setData(SharedPrefKeys.onboarding, true).then((value) {
-      if (value) context.pushReplacementNamed(newRoute: Routes.loginRoute);
+      if (value) context.pushReplacementNamed(newRoute: Routes.login);
     });
   }
 }

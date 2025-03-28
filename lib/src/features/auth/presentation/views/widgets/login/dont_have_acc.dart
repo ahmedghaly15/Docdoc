@@ -22,7 +22,7 @@ class DontHaveAcc extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () => context.pushNamed(routeName: Routes.registerRoute),
+          onPressed: () => context.pushNamed(routeName: Routes.register),
           child: const Text(AppStrings.signUp),
         ),
       ],

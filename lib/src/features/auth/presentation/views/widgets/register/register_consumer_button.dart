@@ -35,7 +35,7 @@ class RegisterConsumerButton extends ConsumerWidget {
           message: AppStrings.registerSuccessMsg,
           actionText: AppStrings.continueWord,
           onAction: () {
-            context.pushNamedAndRemoveUntil(newRoute: Routes.homeRoute);
+            context.pushNamedAndRemoveUntil(newRoute: Routes.home);
           },
         );
       },

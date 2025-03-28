@@ -31,7 +31,7 @@ class LoginConsumerButton extends ConsumerWidget {
       data: (_) {
         context.pop();
         context.pushReplacementNamed(
-          newRoute: Routes.homeRoute,
+          newRoute: Routes.home,
         );
       },
       error: (error, __) {

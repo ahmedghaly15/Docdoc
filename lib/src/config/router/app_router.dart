@@ -13,22 +13,22 @@ import 'package:docdoc/src/features/onboarding/presentation/view/onboarding_view
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.onboardingRoute:
+      case Routes.onboarding:
         return MaterialPageRoute(
           builder: (_) => const OnboardingView(),
         );
 
-      case Routes.loginRoute:
+      case Routes.login:
         return MaterialPageRoute(
           builder: (_) => const LoginView(),
         );
 
-      case Routes.registerRoute:
+      case Routes.register:
         return MaterialPageRoute(
           builder: (_) => const RegisterView(),
         );
 
-      case Routes.homeRoute:
+      case Routes.home:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<HomeCubit>(
             create: (context) => getIt.get<HomeCubit>()..getAllSpecialization(),
