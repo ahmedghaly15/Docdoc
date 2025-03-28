@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:docdoc/src/features/auth/data/models/login/login_request_body.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../data/models/login/login_request_body.dart';
 import '../../data/repos/login_repo.dart';
-import 'form_notifier_provider.dart';
+import 'form_notifier_providers.dart';
 
 part 'login_provider.g.dart';
 
@@ -21,7 +21,7 @@ final passControllerProvider =
   return TextEditingController();
 });
 
-final passFocusNodeProvider = Provider<FocusNode>((ref) {
+final passFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
 
@@ -54,7 +54,7 @@ class Login extends _$Login {
     if (loginFormKey.currentState!.validate()) {
       _login();
     } else {
-      ref.read(formNotifierProvider.notifier).enableAutoValidateMode();
+      ref.read(autovalidateModeProvider.notifier).enableAutovalidateMode();
     }
   }
 }

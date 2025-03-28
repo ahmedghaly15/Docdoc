@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:docdoc/src/config/themes/app_colors.dart';
 import 'package:docdoc/src/config/themes/app_text_styles.dart';
-import 'package:docdoc/src/features/auth/presentation/providers/form_notifier_provider.dart';
+import 'package:docdoc/src/features/auth/presentation/providers/form_notifier_providers.dart';
 
 import '../../providers/login_provider.dart';
 
@@ -22,7 +22,7 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
     final passController = ref.watch(passControllerProvider);
     passController.addListener(() {
       ref
-          .read(formNotifierProvider.notifier)
+          .read(passValidationsProvider.notifier)
           .validatePassword(passController.text);
     });
     super.didChangeDependencies();
@@ -30,29 +30,29 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
 
   @override
   Widget build(BuildContext context) {
-    final formState = ref.watch(formNotifierProvider);
+    final passValidations = ref.watch(passValidationsProvider);
     return Column(
       spacing: 2.h,
       children: [
         _buildValidationRow(
           'At least 1 lowercase letter',
-          formState.hasLowercase,
+          passValidations.hasLowercase,
         ),
         _buildValidationRow(
           'At least 1 uppercase letter',
-          formState.hasUppercase,
+          passValidations.hasUppercase,
         ),
         _buildValidationRow(
           'At least 1 special character',
-          formState.hasSpecialCharacters,
+          passValidations.hasSpecialCharacters,
         ),
         _buildValidationRow(
           'At least 1 number',
-          formState.hasNumber,
+          passValidations.hasNumber,
         ),
         _buildValidationRow(
           'At least 8 characters long',
-          formState.hasMinLength,
+          passValidations.hasMinLength,
         ),
       ],
     );

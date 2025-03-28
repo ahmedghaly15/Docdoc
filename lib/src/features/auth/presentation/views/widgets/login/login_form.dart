@@ -5,8 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../config/themes/app_colors.dart';
 import '../../../../../../core/helpers/auth_helper.dart';
+import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../providers/form_notifier_provider.dart';
+import '../../../providers/form_notifier_providers.dart';
 import '../../../providers/login_provider.dart';
 
 class LoginForm extends ConsumerWidget {
@@ -14,20 +15,20 @@ class LoginForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formState = ref.watch(formNotifierProvider);
-    final formNotifier = ref.read(formNotifierProvider.notifier);
+    final obscureText = ref.watch(obscureTextProvider);
+    final autovalidateMode = ref.watch(autovalidateModeProvider);
     final formKey = ref.watch(loginFormKeyProvider);
     final emailController = ref.watch(emailControllerProvider);
     final passController = ref.watch(passControllerProvider);
     final passFocusNode = ref.read(passFocusNodeProvider);
     return Form(
       key: formKey,
-      autovalidateMode: formState.autoValidateMode,
+      autovalidateMode: autovalidateMode,
       child: Column(
         spacing: 16.h,
         children: <Widget>[
           CustomTextFormField(
-            hintText: 'Email',
+            hintText: AppStrings.email,
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
             autofillHints: const <String>[AutofillHints.email],
@@ -35,20 +36,18 @@ class LoginForm extends ConsumerWidget {
             onEditingComplete: () => context.requestFocus(passFocusNode),
           ),
           CustomTextFormField(
-            hintText: 'Password',
+            hintText: AppStrings.password,
             controller: passController,
             focusNode: passFocusNode,
-            obscureText: formState.isObscureText,
+            obscureText: obscureText,
             keyboardType: TextInputType.visiblePassword,
             autofillHints: const <String>[AutofillHints.password],
             suffix: IconButton(
               icon: Icon(
-                formState.isObscureText
-                    ? Icons.visibility
-                    : Icons.visibility_off,
+                obscureText ? Icons.visibility : Icons.visibility_off,
                 color: AppColors.hintColor,
               ),
-              onPressed: formNotifier.toggleObscureText,
+              onPressed: () => ref.read(obscureTextProvider.notifier).toggle(),
             ),
             validating: (val) => AuthHelper.validatingPasswordField(value: val),
           ),
