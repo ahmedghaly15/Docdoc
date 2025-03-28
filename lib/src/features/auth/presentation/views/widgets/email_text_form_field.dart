@@ -1,31 +1,33 @@
-import 'package:docdoc/src/core/helpers/auth_helper.dart';
-import 'package:docdoc/src/core/widgets/custom_text_form_field.dart';
+import 'package:docdoc/src/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/helpers/auth_helper.dart';
+import '../../../../../core/utils/app_strings.dart';
+import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class EmailTextFormField extends StatelessWidget {
   const EmailTextFormField({
     super.key,
     required this.emailController,
-    required this.emailFocusNode,
-    required this.passwordFocusNode,
+    this.emailFocusNode,
+    required this.nextFocusNode,
   });
 
   final TextEditingController emailController;
-  final FocusNode emailFocusNode;
-  final FocusNode passwordFocusNode;
+  final FocusNode? emailFocusNode;
+  final FocusNode nextFocusNode;
 
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
       controller: emailController,
       focusNode: emailFocusNode,
-      hintText: 'Email',
+      hintText: AppStrings.email,
       autofillHints: const <String>[AutofillHints.email],
       keyboardType: TextInputType.emailAddress,
       validating: (String? val) => AuthHelper.validatingEmailField(value: val),
-      onEditingComplete: () => AuthHelper.requestFocus(
-        context,
-        passwordFocusNode,
+      onEditingComplete: () => context.requestFocus(
+        nextFocusNode,
       ),
     );
   }
