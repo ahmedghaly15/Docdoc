@@ -1,5 +1,4 @@
-import 'package:docdoc/src/core/helpers/app_regex.dart';
-import 'package:flutter/material.dart';
+import 'app_regex.dart';
 
 class AuthHelper {
   static String? validatingEmailField({String? value}) {
@@ -29,10 +28,24 @@ class AuthHelper {
     return null;
   }
 
-  static void keyboardUnfocus(BuildContext context) {
-    FocusScope.of(context).unfocus();
+  static String? validatingNameField(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Name can't be blank!";
+    } else if (value.length < 2) {
+      return "Name must be at least 2 characters long";
+    }
+    return null;
   }
 
-  static void requestFocus(BuildContext context, FocusNode focusNode) =>
-      FocusScope.of(context).requestFocus(focusNode);
+  static String? validatingConfirmPasswordField({
+    String? password,
+    String? confirmPassword,
+  }) {
+    if (confirmPassword == null || confirmPassword.isEmpty) {
+      return "Confirm password can't be blank!";
+    } else if (password != confirmPassword) {
+      return "Passwords do not match";
+    }
+    return null;
+  }
 }

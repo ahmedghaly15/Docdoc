@@ -1,21 +1,21 @@
-import 'package:docdoc/src/core/api/api_result.dart';
-import 'package:docdoc/src/core/api/api_service.dart';
-import 'package:docdoc/src/core/utils/functions/execute_and_handle_errors.dart';
-import 'package:docdoc/src/features/auth/data/models/register/register_request_body.dart';
-import 'package:docdoc/src/features/auth/data/models/register/register_response.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract class RegisterRepo {
-  Future<ApiResult<RegisterResponse>> register(
-    RegisterRequestBody registerRequestBody,
-  );
-}
+import '../../../../core/api/api_result.dart';
+import '../../../../core/utils/functions/execute_and_handle_errors.dart';
+import '../api/register_api_service.dart';
+import '../models/register/register_request_body.dart';
+import '../models/register/register_response.dart';
 
-class RegisterRepoImpl implements RegisterRepo {
-  final ApiService _apiService;
+final registerRepoProvider = Provider.autoDispose<RegisterRepo>((ref) {
+  final registerApiService = ref.watch(registerApiServiceProvider);
+  return RegisterRepo(registerApiService);
+});
 
-  const RegisterRepoImpl(this._apiService);
+class RegisterRepo {
+  final RegisterApiService _apiService;
 
-  @override
+  RegisterRepo(this._apiService);
+
   Future<ApiResult<RegisterResponse>> register(
     RegisterRequestBody registerRequestBody,
   ) {

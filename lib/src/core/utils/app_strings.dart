@@ -16,4 +16,17 @@ class AppStrings {
   static const String privacyPolicy = 'Privacy Policy';
   static const String dontHavAcc = "Don't have an account?";
   static const String signUp = 'Sign up';
+  static const String email = 'Email';
+  static const String password = 'Password';
+  static const String confirmPass = 'Confirm Password';
+  static const String createAccount = 'Create Account';
+  static const String registerViewDescription =
+      "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!";
+  static const String name = 'Name';
+  static const String phoneNumber = 'Phone Number';
+  static const String registerSuccessMsg =
+      'Congratulations, you have registered successfully!';
+  static const String continueWord = 'Continue';
+  static const String signIn = 'Sign in';
+  static const String alreadyHaveAcc = 'Already have an account?';
 }

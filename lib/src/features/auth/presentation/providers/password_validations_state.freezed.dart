@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'auth_form_state.dart';
+part of 'password_validations_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,66 +15,57 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AuthFormState {
-  bool get isObscureText => throw _privateConstructorUsedError;
+mixin _$PasswordValidationsState {
   bool get hasLowercase => throw _privateConstructorUsedError;
   bool get hasUppercase => throw _privateConstructorUsedError;
   bool get hasSpecialCharacters => throw _privateConstructorUsedError;
   bool get hasNumber => throw _privateConstructorUsedError;
   bool get hasMinLength => throw _privateConstructorUsedError;
-  AutovalidateMode get autoValidateMode => throw _privateConstructorUsedError;
 
-  /// Create a copy of AuthFormState
+  /// Create a copy of PasswordValidationsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuthFormStateCopyWith<AuthFormState> get copyWith =>
+  $PasswordValidationsStateCopyWith<PasswordValidationsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthFormStateCopyWith<$Res> {
-  factory $AuthFormStateCopyWith(
-          AuthFormState value, $Res Function(AuthFormState) then) =
-      _$AuthFormStateCopyWithImpl<$Res, AuthFormState>;
+abstract class $PasswordValidationsStateCopyWith<$Res> {
+  factory $PasswordValidationsStateCopyWith(PasswordValidationsState value,
+          $Res Function(PasswordValidationsState) then) =
+      _$PasswordValidationsStateCopyWithImpl<$Res, PasswordValidationsState>;
   @useResult
   $Res call(
-      {bool isObscureText,
-      bool hasLowercase,
+      {bool hasLowercase,
       bool hasUppercase,
       bool hasSpecialCharacters,
       bool hasNumber,
-      bool hasMinLength,
-      AutovalidateMode autoValidateMode});
+      bool hasMinLength});
 }
 
 /// @nodoc
-class _$AuthFormStateCopyWithImpl<$Res, $Val extends AuthFormState>
-    implements $AuthFormStateCopyWith<$Res> {
-  _$AuthFormStateCopyWithImpl(this._value, this._then);
+class _$PasswordValidationsStateCopyWithImpl<$Res,
+        $Val extends PasswordValidationsState>
+    implements $PasswordValidationsStateCopyWith<$Res> {
+  _$PasswordValidationsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AuthFormState
+  /// Create a copy of PasswordValidationsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isObscureText = null,
     Object? hasLowercase = null,
     Object? hasUppercase = null,
     Object? hasSpecialCharacters = null,
     Object? hasNumber = null,
     Object? hasMinLength = null,
-    Object? autoValidateMode = null,
   }) {
     return _then(_value.copyWith(
-      isObscureText: null == isObscureText
-          ? _value.isObscureText
-          : isObscureText // ignore: cast_nullable_to_non_nullable
-              as bool,
       hasLowercase: null == hasLowercase
           ? _value.hasLowercase
           : hasLowercase // ignore: cast_nullable_to_non_nullable
@@ -95,58 +86,49 @@ class _$AuthFormStateCopyWithImpl<$Res, $Val extends AuthFormState>
           ? _value.hasMinLength
           : hasMinLength // ignore: cast_nullable_to_non_nullable
               as bool,
-      autoValidateMode: null == autoValidateMode
-          ? _value.autoValidateMode
-          : autoValidateMode // ignore: cast_nullable_to_non_nullable
-              as AutovalidateMode,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$AuthFormStateImplCopyWith<$Res>
-    implements $AuthFormStateCopyWith<$Res> {
-  factory _$$AuthFormStateImplCopyWith(
-          _$AuthFormStateImpl value, $Res Function(_$AuthFormStateImpl) then) =
-      __$$AuthFormStateImplCopyWithImpl<$Res>;
+abstract class _$$PasswordValidationsStateImplCopyWith<$Res>
+    implements $PasswordValidationsStateCopyWith<$Res> {
+  factory _$$PasswordValidationsStateImplCopyWith(
+          _$PasswordValidationsStateImpl value,
+          $Res Function(_$PasswordValidationsStateImpl) then) =
+      __$$PasswordValidationsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {bool isObscureText,
-      bool hasLowercase,
+      {bool hasLowercase,
       bool hasUppercase,
       bool hasSpecialCharacters,
       bool hasNumber,
-      bool hasMinLength,
-      AutovalidateMode autoValidateMode});
+      bool hasMinLength});
 }
 
 /// @nodoc
-class __$$AuthFormStateImplCopyWithImpl<$Res>
-    extends _$AuthFormStateCopyWithImpl<$Res, _$AuthFormStateImpl>
-    implements _$$AuthFormStateImplCopyWith<$Res> {
-  __$$AuthFormStateImplCopyWithImpl(
-      _$AuthFormStateImpl _value, $Res Function(_$AuthFormStateImpl) _then)
+class __$$PasswordValidationsStateImplCopyWithImpl<$Res>
+    extends _$PasswordValidationsStateCopyWithImpl<$Res,
+        _$PasswordValidationsStateImpl>
+    implements _$$PasswordValidationsStateImplCopyWith<$Res> {
+  __$$PasswordValidationsStateImplCopyWithImpl(
+      _$PasswordValidationsStateImpl _value,
+      $Res Function(_$PasswordValidationsStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthFormState
+  /// Create a copy of PasswordValidationsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isObscureText = null,
     Object? hasLowercase = null,
     Object? hasUppercase = null,
     Object? hasSpecialCharacters = null,
     Object? hasNumber = null,
     Object? hasMinLength = null,
-    Object? autoValidateMode = null,
   }) {
-    return _then(_$AuthFormStateImpl(
-      isObscureText: null == isObscureText
-          ? _value.isObscureText
-          : isObscureText // ignore: cast_nullable_to_non_nullable
-              as bool,
+    return _then(_$PasswordValidationsStateImpl(
       hasLowercase: null == hasLowercase
           ? _value.hasLowercase
           : hasLowercase // ignore: cast_nullable_to_non_nullable
@@ -167,29 +149,20 @@ class __$$AuthFormStateImplCopyWithImpl<$Res>
           ? _value.hasMinLength
           : hasMinLength // ignore: cast_nullable_to_non_nullable
               as bool,
-      autoValidateMode: null == autoValidateMode
-          ? _value.autoValidateMode
-          : autoValidateMode // ignore: cast_nullable_to_non_nullable
-              as AutovalidateMode,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AuthFormStateImpl implements _AuthFormState {
-  const _$AuthFormStateImpl(
-      {this.isObscureText = true,
-      this.hasLowercase = false,
+class _$PasswordValidationsStateImpl implements _PasswordValidationsState {
+  const _$PasswordValidationsStateImpl(
+      {this.hasLowercase = false,
       this.hasUppercase = false,
       this.hasSpecialCharacters = false,
       this.hasNumber = false,
-      this.hasMinLength = false,
-      this.autoValidateMode = AutovalidateMode.disabled});
+      this.hasMinLength = false});
 
-  @override
-  @JsonKey()
-  final bool isObscureText;
   @override
   @JsonKey()
   final bool hasLowercase;
@@ -205,22 +178,17 @@ class _$AuthFormStateImpl implements _AuthFormState {
   @override
   @JsonKey()
   final bool hasMinLength;
-  @override
-  @JsonKey()
-  final AutovalidateMode autoValidateMode;
 
   @override
   String toString() {
-    return 'AuthFormState(isObscureText: $isObscureText, hasLowercase: $hasLowercase, hasUppercase: $hasUppercase, hasSpecialCharacters: $hasSpecialCharacters, hasNumber: $hasNumber, hasMinLength: $hasMinLength, autoValidateMode: $autoValidateMode)';
+    return 'PasswordValidationsState(hasLowercase: $hasLowercase, hasUppercase: $hasUppercase, hasSpecialCharacters: $hasSpecialCharacters, hasNumber: $hasNumber, hasMinLength: $hasMinLength)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthFormStateImpl &&
-            (identical(other.isObscureText, isObscureText) ||
-                other.isObscureText == isObscureText) &&
+            other is _$PasswordValidationsStateImpl &&
             (identical(other.hasLowercase, hasLowercase) ||
                 other.hasLowercase == hasLowercase) &&
             (identical(other.hasUppercase, hasUppercase) ||
@@ -230,43 +198,31 @@ class _$AuthFormStateImpl implements _AuthFormState {
             (identical(other.hasNumber, hasNumber) ||
                 other.hasNumber == hasNumber) &&
             (identical(other.hasMinLength, hasMinLength) ||
-                other.hasMinLength == hasMinLength) &&
-            (identical(other.autoValidateMode, autoValidateMode) ||
-                other.autoValidateMode == autoValidateMode));
+                other.hasMinLength == hasMinLength));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      isObscureText,
-      hasLowercase,
-      hasUppercase,
-      hasSpecialCharacters,
-      hasNumber,
-      hasMinLength,
-      autoValidateMode);
+  int get hashCode => Object.hash(runtimeType, hasLowercase, hasUppercase,
+      hasSpecialCharacters, hasNumber, hasMinLength);
 
-  /// Create a copy of AuthFormState
+  /// Create a copy of PasswordValidationsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthFormStateImplCopyWith<_$AuthFormStateImpl> get copyWith =>
-      __$$AuthFormStateImplCopyWithImpl<_$AuthFormStateImpl>(this, _$identity);
+  _$$PasswordValidationsStateImplCopyWith<_$PasswordValidationsStateImpl>
+      get copyWith => __$$PasswordValidationsStateImplCopyWithImpl<
+          _$PasswordValidationsStateImpl>(this, _$identity);
 }
 
-abstract class _AuthFormState implements AuthFormState {
-  const factory _AuthFormState(
-      {final bool isObscureText,
-      final bool hasLowercase,
+abstract class _PasswordValidationsState implements PasswordValidationsState {
+  const factory _PasswordValidationsState(
+      {final bool hasLowercase,
       final bool hasUppercase,
       final bool hasSpecialCharacters,
       final bool hasNumber,
-      final bool hasMinLength,
-      final AutovalidateMode autoValidateMode}) = _$AuthFormStateImpl;
+      final bool hasMinLength}) = _$PasswordValidationsStateImpl;
 
-  @override
-  bool get isObscureText;
   @override
   bool get hasLowercase;
   @override
@@ -277,13 +233,11 @@ abstract class _AuthFormState implements AuthFormState {
   bool get hasNumber;
   @override
   bool get hasMinLength;
-  @override
-  AutovalidateMode get autoValidateMode;
 
-  /// Create a copy of AuthFormState
+  /// Create a copy of PasswordValidationsState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthFormStateImplCopyWith<_$AuthFormStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PasswordValidationsStateImplCopyWith<_$PasswordValidationsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
