@@ -16,4 +16,6 @@ class AppStrings {
   static const String privacyPolicy = 'Privacy Policy';
   static const String dontHavAcc = "Don't have an account?";
   static const String signUp = 'Sign up';
+  static const String email = 'Email';
+  static const String password = 'Password';
 }
