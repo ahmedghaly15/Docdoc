@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/api/api_result.dart';
 import '../../../../core/utils/functions/execute_and_handle_errors.dart';
 import '../api/login_api_service.dart';
-import '../models/login/login_request_body.dart';
-import '../models/login/login_response.dart';
+import '../models/auth_response.dart';
+import '../models/login_request_body.dart';
 
 final loginRepoProvider = Provider.autoDispose<LoginRepo>((ref) {
   final loginApiService = ref.watch(loginApiServiceProvider);
@@ -16,10 +16,10 @@ class LoginRepo {
 
   LoginRepo(this._apiService);
 
-  Future<ApiResult<LoginResponse>> login(
+  Future<ApiResult<AuthResponse>> login(
     LoginRequestBody loginRequestBody,
   ) {
-    return executeAndHandleErrors<LoginResponse>(
+    return executeAndHandleErrors<AuthResponse>(
       () async => await _apiService.login(loginRequestBody),
     );
   }

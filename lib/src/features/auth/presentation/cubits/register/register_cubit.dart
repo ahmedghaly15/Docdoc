@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:docdoc/src/features/auth/data/models/register/register_request_body.dart';
+import 'package:docdoc/src/features/auth/data/models/register_request_body.dart';
 import 'package:docdoc/src/features/auth/data/repos/register_repo.dart';
 
 part 'register_cubit.freezed.dart';

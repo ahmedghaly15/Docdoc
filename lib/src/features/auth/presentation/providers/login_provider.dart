@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../data/models/login/login_request_body.dart';
+import '../../data/models/login_request_body.dart';
 import '../../data/repos/login_repo.dart';
 import 'form_notifier_providers.dart';
 

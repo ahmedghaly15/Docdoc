@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/api/api_result.dart';
 import '../../../../core/utils/functions/execute_and_handle_errors.dart';
 import '../api/register_api_service.dart';
-import '../models/register/register_request_body.dart';
-import '../models/register/register_response.dart';
+import '../models/auth_response.dart';
+import '../models/register_request_body.dart';
 
 final registerRepoProvider = Provider.autoDispose<RegisterRepo>((ref) {
   final registerApiService = ref.watch(registerApiServiceProvider);
@@ -16,10 +16,10 @@ class RegisterRepo {
 
   RegisterRepo(this._apiService);
 
-  Future<ApiResult<RegisterResponse>> register(
+  Future<ApiResult<AuthResponse>> register(
     RegisterRequestBody registerRequestBody,
   ) {
-    return executeAndHandleErrors<RegisterResponse>(
+    return executeAndHandleErrors<AuthResponse>(
       () async => await _apiService.register(registerRequestBody),
     );
   }

@@ -5,8 +5,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/api/dio_factory.dart';
 import '../../../../core/api/end_points.dart';
-import '../models/login/login_request_body.dart';
-import '../models/login/login_response.dart';
+import '../models/auth_response.dart';
+import '../models/login_request_body.dart';
 
 part 'login_api_service.g.dart';
 
@@ -20,7 +20,7 @@ abstract class LoginApiService {
   factory LoginApiService(Dio dio) = _LoginApiService;
 
   @POST(EndPoints.login)
-  Future<LoginResponse> login(
+  Future<AuthResponse> login(
     @Body() LoginRequestBody loginRequestBody,
   );
 }

@@ -1,29 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'register_response.dart';
+part of 'auth_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RegisterResponseImpl _$$RegisterResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RegisterResponseImpl(
-      message: json['message'] as String?,
+_$AuthResponseImpl _$$AuthResponseImplFromJson(Map<String, dynamic> json) =>
+    _$AuthResponseImpl(
       userData: json['data'] == null
           ? null
           : UserData.fromJson(json['data'] as Map<String, dynamic>),
-      status: json['status'] as bool?,
-      code: (json['code'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$RegisterResponseImplToJson(
-        _$RegisterResponseImpl instance) =>
+Map<String, dynamic> _$$AuthResponseImplToJson(_$AuthResponseImpl instance) =>
     <String, dynamic>{
-      'message': instance.message,
-      'data': instance.userData,
-      'status': instance.status,
-      'code': instance.code,
+      'data': instance.userData?.toJson(),
     };
 
 _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
