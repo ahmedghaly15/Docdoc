@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:docdoc/src/config/themes/app_colors.dart';
-import 'package:docdoc/src/config/themes/app_text_styles.dart';
-import 'package:docdoc/src/features/auth/presentation/providers/form_notifier_providers.dart';
-
-import '../../providers/login_provider.dart';
+import '../../../../../config/themes/app_colors.dart';
+import '../../../../../config/themes/app_text_styles.dart';
+import '../../providers/form_notifier_providers.dart';
+import '../../providers/register_provider.dart';
 
 class PasswordValidations extends ConsumerStatefulWidget {
   const PasswordValidations({super.key});
@@ -19,7 +18,7 @@ class PasswordValidations extends ConsumerStatefulWidget {
 class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
   @override
   void didChangeDependencies() {
-    final passController = ref.watch(passControllerProvider);
+    final passController = ref.watch(registerPassControllerProvider);
     passController.addListener(() {
       ref
           .read(passValidationsProvider.notifier)

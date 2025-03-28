@@ -12,16 +12,16 @@ final loginFormKeyProvider = Provider.autoDispose<GlobalKey<FormState>>((ref) {
   return GlobalKey<FormState>();
 });
 
-final emailControllerProvider =
+final loginEmailControllerProvider =
     Provider.autoDispose<TextEditingController>((ref) {
   return TextEditingController();
 });
-final passControllerProvider =
+final loginPassControllerProvider =
     Provider.autoDispose<TextEditingController>((ref) {
   return TextEditingController();
 });
 
-final passFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
+final loginPassFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
 
@@ -37,8 +37,8 @@ class Login extends _$Login {
     final cancelToken = CancelToken();
     ref.onDispose(() => cancelToken.cancel());
     final result = await ref.read(loginRepoProvider).login(LoginRequestBody(
-          email: ref.watch(emailControllerProvider).text.trim(),
-          password: ref.watch(passControllerProvider).text,
+          email: ref.watch(loginEmailControllerProvider).text.trim(),
+          password: ref.watch(loginPassControllerProvider).text,
         ));
     result.when(
       success: (loginResponse) => state = AsyncValue.data(loginResponse),
@@ -54,7 +54,7 @@ class Login extends _$Login {
     if (loginFormKey.currentState!.validate()) {
       _login();
     } else {
-      ref.read(autovalidateModeProvider.notifier).enableAutovalidateMode();
+      ref.read(loginAutovalidateModeProvider.notifier).enableAutovalidateMode();
     }
   }
 }
