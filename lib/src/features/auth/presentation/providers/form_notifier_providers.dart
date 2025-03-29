@@ -4,19 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/helpers/app_regex.dart';
 import 'password_validations_state.dart';
 
-final loginPassObscureTextProvider =
-    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
-  (ref) => ObscureTextNotifier(),
-);
-final registerPassObscureTextProvider =
-    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
-  (ref) => ObscureTextNotifier(),
-);
-final confirmPassObscureTextProvider =
-    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
-  (ref) => ObscureTextNotifier(),
-);
-
 class ObscureTextNotifier extends StateNotifier<bool> {
   ObscureTextNotifier() : super(true);
 

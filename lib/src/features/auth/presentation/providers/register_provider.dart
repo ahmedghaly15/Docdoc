@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/models/register_request_body.dart';
@@ -16,14 +17,6 @@ final registerEmailControllerProvider =
     Provider.autoDispose<TextEditingController>((ref) {
   return TextEditingController();
 });
-final registerNameControllerProvider =
-    Provider.autoDispose<TextEditingController>((ref) {
-  return TextEditingController();
-});
-final registerPhoneNumberControllerProvider =
-    Provider.autoDispose<TextEditingController>((ref) {
-  return TextEditingController();
-});
 final registerPassControllerProvider =
     Provider.autoDispose<TextEditingController>((ref) {
   return TextEditingController();
@@ -35,10 +28,6 @@ final registerConfirmPassControllerProvider =
 final registerEmailFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
-final registerPhoneNumberFocusNodeProvider =
-    Provider.autoDispose<FocusNode>((ref) {
-  return FocusNode();
-});
 final registerPassFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
@@ -46,6 +35,14 @@ final registerConfirmPassFocusNodeProvider =
     Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
+final registerPassObscureTextProvider =
+    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
+  (ref) => ObscureTextNotifier(),
+);
+final confirmPassObscureTextProvider =
+    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
+  (ref) => ObscureTextNotifier(),
+);
 
 @riverpod
 class Register extends _$Register {
@@ -61,12 +58,9 @@ class Register extends _$Register {
     final result = await ref
         .read(registerRepoProvider)
         .register(RegisterRequestBody(
-          name: ref.watch(registerNameControllerProvider).text.trim(),
           email: ref.watch(registerEmailControllerProvider).text.trim(),
-          phone: ref.watch(registerPhoneNumberControllerProvider).text.trim(),
           password: ref.watch(registerPassControllerProvider).text,
           passwordConfirmation: ref.watch(registerPassControllerProvider).text,
-          gender: 0,
         ));
     result.when(
       success: (registerResponse) => state = AsyncValue.data(registerResponse),

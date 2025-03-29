@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/models/login_request_body.dart';
@@ -24,6 +25,11 @@ final loginPassControllerProvider =
 final loginPassFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
+
+final loginPassObscureTextProvider =
+    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
+  (ref) => ObscureTextNotifier(),
+);
 
 @riverpod
 class Login extends _$Login {
