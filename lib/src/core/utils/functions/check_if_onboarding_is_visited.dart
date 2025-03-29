@@ -1,8 +1,8 @@
-import 'package:docdoc/src/core/helpers/constants.dart';
-import 'package:docdoc/src/core/helpers/shared_pref_helper.dart';
+import '../../helpers/cache_helper.dart';
+import '../../helpers/cache_keys.dart';
 
 Future<void> checkIfOnboardingIsVisited() async {
-  bool? onboarding = await SharedPrefHelper.getBool(SharedPrefKeys.onboarding);
+  bool? onboarding = await CacheHelper.getBool(CacheKeys.onboarding);
   if (onboarding != null) {
     isOnboardingVisited = onboarding;
   } else {

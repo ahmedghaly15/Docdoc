@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../data/models/auth_response.dart';
 import '../../data/models/login_request_body.dart';
 import '../../data/repos/login_repo.dart';
 import 'form_notifier_providers.dart';
@@ -34,7 +35,7 @@ final loginPassObscureTextProvider =
 @riverpod
 class Login extends _$Login {
   @override
-  AsyncValue? build() {
+  AsyncValue<AuthResponse>? build() {
     return null;
   }
 

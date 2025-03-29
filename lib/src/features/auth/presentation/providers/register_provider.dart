@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../data/models/auth_response.dart';
 import '../../data/models/register_request_body.dart';
 import '../../data/repos/register_repo.dart';
 import 'form_notifier_providers.dart';
@@ -47,7 +48,7 @@ final confirmPassObscureTextProvider =
 @riverpod
 class Register extends _$Register {
   @override
-  AsyncValue? build() {
+  AsyncValue<AuthResponse>? build() {
     return null;
   }
 

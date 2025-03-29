@@ -9,9 +9,9 @@ part of 'register_request_body.dart';
 RegisterRequestBody _$RegisterRequestBodyFromJson(Map<String, dynamic> json) =>
     RegisterRequestBody(
       name: json['name'] as String? ?? 'name',
-      email: json['email'] as String,
-      password: json['password'] as String,
-      passwordConfirmation: json['password_confirmation'] as String,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
+      passwordConfirmation: json['password_confirmation'] as String?,
       phone: json['phone'] as String? ?? '1234567890',
       gender: json['gender'] as String? ?? '0',
     );
