@@ -2,8 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import 'package:docdoc/src/core/helpers/constants.dart';
-import 'package:docdoc/src/core/helpers/shared_pref_helper.dart';
+import '../models/user_model.dart';
 
 final dioProvider = Provider<Dio>((ref) => DioFactory.getDio());
 
@@ -30,10 +29,10 @@ class DioFactory {
   }
 
   static void _addDioHeaders() async {
+    final user = await UserModel.getSecuredUser();
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization':
-          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
+      'Authorization': 'Bearer ${user?.token}',
     };
   }
 
