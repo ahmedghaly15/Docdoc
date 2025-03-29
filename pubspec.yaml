@@ -44,6 +44,8 @@ dependencies:
   # State management
   flutter_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
+  # A simple and customizable phone number input widget
+  intl_phone_number_input: ^0.7.4
 
 dev_dependencies:
   flutter_test:

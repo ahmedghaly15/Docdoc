@@ -94,7 +94,7 @@ class CustomTextFormField extends StatelessWidget {
       autofillHints: autofillHints,
       onFieldSubmitted: onSubmit,
       onChanged: onChanged,
-      style: _customTextFieldTextStyle(),
+      style: textStyle,
       maxLines: maxLines,
       cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
@@ -102,35 +102,30 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: AppColors.textFormFieldFillColor,
         errorStyle: TextStyle(fontSize: 13.sp, color: Colors.red),
         hintText: hintText,
-        hintStyle: hintStyle ??
-            _customTextFieldTextStyle().copyWith(color: AppColors.hintColor),
+        hintStyle: hintStyle ?? textStyle.copyWith(color: AppColors.hintColor),
         errorMaxLines: null,
         prefixIcon: prefix,
         suffixIcon: suffix,
         labelText: label,
         labelStyle: Theme.of(context).textTheme.titleSmall,
-        contentPadding: contentPadding ??
-            EdgeInsets.symmetric(
-              horizontal: 20.w,
-              vertical: 17.h,
-            ),
-        enabledBorder: enabledBorder ?? _buildUnderlineInputBorder(),
+        contentPadding: contentPadding ?? contentPad,
+        enabledBorder: enabledBorder ?? underlineInputBorder(),
         focusedBorder: focusedBorder ??
-            _buildUnderlineInputBorder(
+            underlineInputBorder(
               borderColor: AppColors.primaryColor,
               width: 2,
             ),
         errorBorder: errorBorder ??
-            _buildUnderlineInputBorder(
+            underlineInputBorder(
               borderColor: Colors.red,
               width: 1.3,
             ),
         focusedErrorBorder: focusedErrorBorder ??
-            _buildUnderlineInputBorder(
+            underlineInputBorder(
               borderColor: Colors.red,
               width: 1.3,
             ),
-        border: border ?? _buildUnderlineInputBorder(),
+        border: border ?? underlineInputBorder(),
         disabledBorder: disabledBorder,
       ),
       validator: validating,
@@ -138,11 +133,14 @@ class CustomTextFormField extends StatelessWidget {
     );
   }
 
-  TextStyle _customTextFieldTextStyle() {
-    return AppTextStyles.font14Regular;
-  }
+  static EdgeInsetsGeometry get contentPad => EdgeInsets.symmetric(
+        horizontal: 20.w,
+        vertical: 17.h,
+      );
 
-  OutlineInputBorder _buildUnderlineInputBorder({
+  static TextStyle get textStyle => AppTextStyles.font14Regular;
+
+  static OutlineInputBorder underlineInputBorder({
     Color? borderColor,
     double width = 1,
   }) {

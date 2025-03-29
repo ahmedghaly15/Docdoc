@@ -22,11 +22,18 @@ class AppStrings {
   static const String createAccount = 'Create Account';
   static const String registerViewDescription =
       "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!";
-  static const String name = 'Name';
+  static const String fullName = 'Full Name';
   static const String phoneNumber = 'Phone Number';
   static const String registerSuccessMsg =
       'Congratulations, you have registered successfully!';
   static const String continueWord = 'Continue';
   static const String signIn = 'Sign in';
   static const String alreadyHaveAcc = 'Already have an account?';
+  static const String fillYourProfile = 'Fill Your Profile';
+  static const String fillProfileViewDescription =
+      'Please take a few minutes to fill out your profile with as much detail as possible.';
+  static const String submit = 'Submit';
+  static const String gender = 'Gender';
+  static const String male = 'Male';
+  static const String female = 'Female';
 }
