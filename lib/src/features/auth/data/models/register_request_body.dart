@@ -10,15 +10,15 @@ class RegisterRequestBody {
   final String phone;
   @JsonKey(name: 'password_confirmation')
   final String passwordConfirmation;
-  final int gender;
+  final String gender;
 
   const RegisterRequestBody({
-    required this.name,
+    this.name = 'name',
     required this.email,
     required this.password,
-    required this.phone,
     required this.passwordConfirmation,
-    required this.gender,
+    this.phone = '1234567890',
+    this.gender = '0',
   });
 
   factory RegisterRequestBody.fromJson(Map<String, dynamic> json) =>

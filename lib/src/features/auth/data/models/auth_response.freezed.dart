@@ -21,7 +21,7 @@ AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AuthResponse {
   @JsonKey(name: 'data')
-  UserData? get userData => throw _privateConstructorUsedError;
+  UserModel? get userData => throw _privateConstructorUsedError;
 
   /// Serializes this AuthResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,9 +39,9 @@ abstract class $AuthResponseCopyWith<$Res> {
           AuthResponse value, $Res Function(AuthResponse) then) =
       _$AuthResponseCopyWithImpl<$Res, AuthResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'data') UserData? userData});
+  $Res call({@JsonKey(name: 'data') UserModel? userData});
 
-  $UserDataCopyWith<$Res>? get userData;
+  $UserModelCopyWith<$Res>? get userData;
 }
 
 /// @nodoc
@@ -65,7 +65,7 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
       userData: freezed == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
-              as UserData?,
+              as UserModel?,
     ) as $Val);
   }
 
@@ -73,12 +73,12 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserDataCopyWith<$Res>? get userData {
+  $UserModelCopyWith<$Res>? get userData {
     if (_value.userData == null) {
       return null;
     }
 
-    return $UserDataCopyWith<$Res>(_value.userData!, (value) {
+    return $UserModelCopyWith<$Res>(_value.userData!, (value) {
       return _then(_value.copyWith(userData: value) as $Val);
     });
   }
@@ -92,10 +92,10 @@ abstract class _$$AuthResponseImplCopyWith<$Res>
       __$$AuthResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'data') UserData? userData});
+  $Res call({@JsonKey(name: 'data') UserModel? userData});
 
   @override
-  $UserDataCopyWith<$Res>? get userData;
+  $UserModelCopyWith<$Res>? get userData;
 }
 
 /// @nodoc
@@ -117,7 +117,7 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
       userData: freezed == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
-              as UserData?,
+              as UserModel?,
     ));
   }
 }
@@ -133,7 +133,7 @@ class _$AuthResponseImpl implements _AuthResponse {
 
   @override
   @JsonKey(name: 'data')
-  final UserData? userData;
+  final UserModel? userData;
 
   @override
   String toString() {
@@ -171,189 +171,19 @@ class _$AuthResponseImpl implements _AuthResponse {
 
 abstract class _AuthResponse implements AuthResponse {
   const factory _AuthResponse(
-      {@JsonKey(name: 'data') final UserData? userData}) = _$AuthResponseImpl;
+      {@JsonKey(name: 'data') final UserModel? userData}) = _$AuthResponseImpl;
 
   factory _AuthResponse.fromJson(Map<String, dynamic> json) =
       _$AuthResponseImpl.fromJson;
 
   @override
   @JsonKey(name: 'data')
-  UserData? get userData;
+  UserModel? get userData;
 
   /// Create a copy of AuthResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthResponseImplCopyWith<_$AuthResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-UserData _$UserDataFromJson(Map<String, dynamic> json) {
-  return _UserData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$UserData {
-  String? get token => throw _privateConstructorUsedError;
-  @JsonKey(name: 'username')
-  String? get userName => throw _privateConstructorUsedError;
-
-  /// Serializes this UserData to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of UserData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserDataCopyWith<UserData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserDataCopyWith<$Res> {
-  factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
-      _$UserDataCopyWithImpl<$Res, UserData>;
-  @useResult
-  $Res call({String? token, @JsonKey(name: 'username') String? userName});
-}
-
-/// @nodoc
-class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
-    implements $UserDataCopyWith<$Res> {
-  _$UserDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of UserData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = freezed,
-    Object? userName = freezed,
-  }) {
-    return _then(_value.copyWith(
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$UserDataImplCopyWith<$Res>
-    implements $UserDataCopyWith<$Res> {
-  factory _$$UserDataImplCopyWith(
-          _$UserDataImpl value, $Res Function(_$UserDataImpl) then) =
-      __$$UserDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? token, @JsonKey(name: 'username') String? userName});
-}
-
-/// @nodoc
-class __$$UserDataImplCopyWithImpl<$Res>
-    extends _$UserDataCopyWithImpl<$Res, _$UserDataImpl>
-    implements _$$UserDataImplCopyWith<$Res> {
-  __$$UserDataImplCopyWithImpl(
-      _$UserDataImpl _value, $Res Function(_$UserDataImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? token = freezed,
-    Object? userName = freezed,
-  }) {
-    return _then(_$UserDataImpl(
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$UserDataImpl implements _UserData {
-  const _$UserDataImpl({this.token, @JsonKey(name: 'username') this.userName});
-
-  factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserDataImplFromJson(json);
-
-  @override
-  final String? token;
-  @override
-  @JsonKey(name: 'username')
-  final String? userName;
-
-  @override
-  String toString() {
-    return 'UserData(token: $token, userName: $userName)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UserDataImpl &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, token, userName);
-
-  /// Create a copy of UserData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
-      __$$UserDataImplCopyWithImpl<_$UserDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UserDataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _UserData implements UserData {
-  const factory _UserData(
-      {final String? token,
-      @JsonKey(name: 'username') final String? userName}) = _$UserDataImpl;
-
-  factory _UserData.fromJson(Map<String, dynamic> json) =
-      _$UserDataImpl.fromJson;
-
-  @override
-  String? get token;
-  @override
-  @JsonKey(name: 'username')
-  String? get userName;
-
-  /// Create a copy of UserData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
