@@ -20,9 +20,13 @@ class _RegisterApiService implements RegisterApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<AuthResponse> register(RegisterRequestBody registerRequestBody) async {
+  Future<AuthResponse> register(
+    RegisterRequestBody registerRequestBody, [
+    CancelToken? cancelToken,
+  ]) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(registerRequestBody.toJson());
@@ -33,6 +37,7 @@ class _RegisterApiService implements RegisterApiService {
             'auth/register',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

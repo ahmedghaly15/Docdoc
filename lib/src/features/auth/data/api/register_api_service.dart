@@ -21,6 +21,7 @@ abstract class RegisterApiService {
 
   @POST(EndPoints.register)
   Future<AuthResponse> register(
-    @Body() RegisterRequestBody registerRequestBody,
-  );
+    @Body() RegisterRequestBody registerRequestBody, [
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
 }

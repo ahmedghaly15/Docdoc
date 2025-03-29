@@ -55,13 +55,15 @@ class Register extends _$Register {
     state = const AsyncValue.loading();
     final cancelToken = CancelToken();
     ref.onDispose(() => cancelToken.cancel());
-    final result = await ref
-        .read(registerRepoProvider)
-        .register(RegisterRequestBody(
-          email: ref.watch(registerEmailControllerProvider).text.trim(),
-          password: ref.watch(registerPassControllerProvider).text,
-          passwordConfirmation: ref.watch(registerPassControllerProvider).text,
-        ));
+    final result = await ref.read(registerRepoProvider).register(
+          RegisterRequestBody(
+            email: ref.watch(registerEmailControllerProvider).text.trim(),
+            password: ref.watch(registerPassControllerProvider).text,
+            passwordConfirmation:
+                ref.watch(registerPassControllerProvider).text,
+          ),
+          cancelToken,
+        );
     result.when(
       success: (registerResponse) => state = AsyncValue.data(registerResponse),
       failure: (error) => state = AsyncValue.error(

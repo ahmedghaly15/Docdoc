@@ -42,10 +42,13 @@ class Login extends _$Login {
     state = const AsyncValue.loading();
     final cancelToken = CancelToken();
     ref.onDispose(() => cancelToken.cancel());
-    final result = await ref.read(loginRepoProvider).login(LoginRequestBody(
-          email: ref.watch(loginEmailControllerProvider).text.trim(),
-          password: ref.watch(loginPassControllerProvider).text,
-        ));
+    final result = await ref.read(loginRepoProvider).login(
+          LoginRequestBody(
+            email: ref.watch(loginEmailControllerProvider).text.trim(),
+            password: ref.watch(loginPassControllerProvider).text,
+          ),
+          cancelToken,
+        );
     result.when(
       success: (loginResponse) => state = AsyncValue.data(loginResponse),
       failure: (error) => state = AsyncValue.error(

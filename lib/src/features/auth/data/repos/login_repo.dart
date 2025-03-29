@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/api/api_result.dart';
@@ -17,10 +18,11 @@ class LoginRepo {
   LoginRepo(this._apiService);
 
   Future<ApiResult<AuthResponse>> login(
-    LoginRequestBody loginRequestBody,
-  ) {
+    LoginRequestBody loginRequestBody, [
+    CancelToken? cancelToken,
+  ]) {
     return executeAndHandleErrors<AuthResponse>(
-      () async => await _apiService.login(loginRequestBody),
+      () async => await _apiService.login(loginRequestBody, cancelToken),
     );
   }
 }

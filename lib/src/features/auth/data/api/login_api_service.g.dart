@@ -20,9 +20,13 @@ class _LoginApiService implements LoginApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<AuthResponse> login(LoginRequestBody loginRequestBody) async {
+  Future<AuthResponse> login(
+    LoginRequestBody loginRequestBody, [
+    CancelToken? cancelToken,
+  ]) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(loginRequestBody.toJson());
@@ -33,6 +37,7 @@ class _LoginApiService implements LoginApiService {
             'auth/login',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );

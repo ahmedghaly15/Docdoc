@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/api/api_result.dart';
@@ -17,10 +18,11 @@ class RegisterRepo {
   RegisterRepo(this._apiService);
 
   Future<ApiResult<AuthResponse>> register(
-    RegisterRequestBody registerRequestBody,
-  ) {
+    RegisterRequestBody registerRequestBody, [
+    CancelToken? cancelToken,
+  ]) {
     return executeAndHandleErrors<AuthResponse>(
-      () async => await _apiService.register(registerRequestBody),
+      () async => await _apiService.register(registerRequestBody, cancelToken),
     );
   }
 }

@@ -21,6 +21,7 @@ abstract class LoginApiService {
 
   @POST(EndPoints.login)
   Future<AuthResponse> login(
-    @Body() LoginRequestBody loginRequestBody,
-  );
+    @Body() LoginRequestBody loginRequestBody, [
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
 }
