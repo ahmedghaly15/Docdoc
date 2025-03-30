@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../data/models/auth_response.dart';
+import '../../../../core/api/api_response.dart';
+import '../../../../core/models/user_model.dart';
 import '../../data/models/register_request_body.dart';
 import '../../data/repos/register_repo.dart';
 import 'form_notifier_providers.dart';
@@ -50,7 +51,7 @@ final confirmPassObscureTextProvider =
 @riverpod
 class Register extends _$Register {
   @override
-  AsyncValue<AuthResponse>? build() {
+  AsyncValue<ApiResponse<UserModel>>? build() {
     return null;
   }
 
@@ -64,7 +65,7 @@ class Register extends _$Register {
             password: ref.watch(registerPassControllerProvider).text,
             passwordConfirmation:
                 ref.watch(registerPassControllerProvider).text,
-            // Used Random() To avoid api errors about used phone
+            // Note: Used Random() To avoid api errors about used phone
             phone: Random().nextInt(10000000).toString(),
           ),
           cancelToken,

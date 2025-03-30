@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../config/router/routes.dart';
+import '../../../../../../core/api/api_response.dart';
 import '../../../../../../core/api/dio_factory.dart';
 import '../../../../../../core/models/user_model.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/widgets/primary_button.dart';
-import '../../../../data/models/auth_response.dart';
 import '../../../providers/register_provider.dart';
 
 class RegisterConsumerButton extends ConsumerWidget {
@@ -34,7 +34,7 @@ class RegisterConsumerButton extends ConsumerWidget {
   }
 
   void _listener({
-    AsyncValue<AuthResponse>? current,
+    AsyncValue<ApiResponse<UserModel>>? current,
     required BuildContext context,
     required UserModel user,
   }) {
@@ -45,7 +45,7 @@ class RegisterConsumerButton extends ConsumerWidget {
       },
       data: (registerResponse) {
         context.pop();
-        final userToken = registerResponse.userData!.token!;
+        final userToken = registerResponse.data!.token!;
         context.showAnimatedDialog(
           state: CustomDialogStates.success,
           message: AppStrings.registerSuccessMsg,
