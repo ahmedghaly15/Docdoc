@@ -5,20 +5,20 @@ part 'register_request_body.g.dart';
 @JsonSerializable()
 class RegisterRequestBody {
   final String name;
-  final String email;
-  final String password;
-  final String phone;
+  final String? email;
+  final String? password;
+  final String? phone;
   @JsonKey(name: 'password_confirmation')
-  final String passwordConfirmation;
-  final int gender;
+  final String? passwordConfirmation;
+  final String gender;
 
   const RegisterRequestBody({
-    required this.name,
-    required this.email,
-    required this.password,
-    required this.phone,
-    required this.passwordConfirmation,
-    required this.gender,
+    this.name = 'name',
+    this.email,
+    this.password,
+    this.passwordConfirmation,
+    this.phone,
+    this.gender = '0',
   });
 
   factory RegisterRequestBody.fromJson(Map<String, dynamic> json) =>

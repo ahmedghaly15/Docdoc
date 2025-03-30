@@ -22,6 +22,8 @@ ApiErrorModel _$ApiErrorModelFromJson(Map<String, dynamic> json) {
 mixin _$ApiErrorModel {
   int? get code => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
+  @JsonKey(name: 'data')
+  dynamic get errors => throw _privateConstructorUsedError;
 
   /// Create a copy of ApiErrorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -36,7 +38,8 @@ abstract class $ApiErrorModelCopyWith<$Res> {
           ApiErrorModel value, $Res Function(ApiErrorModel) then) =
       _$ApiErrorModelCopyWithImpl<$Res, ApiErrorModel>;
   @useResult
-  $Res call({int? code, String? message});
+  $Res call(
+      {int? code, String? message, @JsonKey(name: 'data') dynamic errors});
 }
 
 /// @nodoc
@@ -56,6 +59,7 @@ class _$ApiErrorModelCopyWithImpl<$Res, $Val extends ApiErrorModel>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? errors = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -66,6 +70,10 @@ class _$ApiErrorModelCopyWithImpl<$Res, $Val extends ApiErrorModel>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      errors: freezed == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -78,7 +86,8 @@ abstract class _$$ApiErrorModelImplCopyWith<$Res>
       __$$ApiErrorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? code, String? message});
+  $Res call(
+      {int? code, String? message, @JsonKey(name: 'data') dynamic errors});
 }
 
 /// @nodoc
@@ -96,6 +105,7 @@ class __$$ApiErrorModelImplCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? errors = freezed,
   }) {
     return _then(_$ApiErrorModelImpl(
       code: freezed == code
@@ -106,14 +116,20 @@ class __$$ApiErrorModelImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      errors: freezed == errors
+          ? _value.errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$ApiErrorModelImpl implements _ApiErrorModel {
-  const _$ApiErrorModelImpl({this.code, this.message});
+class _$ApiErrorModelImpl extends _ApiErrorModel {
+  const _$ApiErrorModelImpl(
+      {this.code, this.message, @JsonKey(name: 'data') this.errors})
+      : super._();
 
   factory _$ApiErrorModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiErrorModelImplFromJson(json);
@@ -122,10 +138,13 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
   final int? code;
   @override
   final String? message;
+  @override
+  @JsonKey(name: 'data')
+  final dynamic errors;
 
   @override
   String toString() {
-    return 'ApiErrorModel(code: $code, message: $message)';
+    return 'ApiErrorModel(code: $code, message: $message, errors: $errors)';
   }
 
   @override
@@ -134,12 +153,14 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
         (other.runtimeType == runtimeType &&
             other is _$ApiErrorModelImpl &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            const DeepCollectionEquality().equals(other.errors, errors));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(
+      runtimeType, code, message, const DeepCollectionEquality().hash(errors));
 
   /// Create a copy of ApiErrorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -150,9 +171,12 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
       __$$ApiErrorModelImplCopyWithImpl<_$ApiErrorModelImpl>(this, _$identity);
 }
 
-abstract class _ApiErrorModel implements ApiErrorModel {
-  const factory _ApiErrorModel({final int? code, final String? message}) =
-      _$ApiErrorModelImpl;
+abstract class _ApiErrorModel extends ApiErrorModel {
+  const factory _ApiErrorModel(
+      {final int? code,
+      final String? message,
+      @JsonKey(name: 'data') final dynamic errors}) = _$ApiErrorModelImpl;
+  const _ApiErrorModel._() : super._();
 
   factory _ApiErrorModel.fromJson(Map<String, dynamic> json) =
       _$ApiErrorModelImpl.fromJson;
@@ -161,6 +185,9 @@ abstract class _ApiErrorModel implements ApiErrorModel {
   int? get code;
   @override
   String? get message;
+  @override
+  @JsonKey(name: 'data')
+  dynamic get errors;
 
   /// Create a copy of ApiErrorModel
   /// with the given fields replaced by the non-null parameter values.

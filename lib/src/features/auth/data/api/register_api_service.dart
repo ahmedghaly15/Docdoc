@@ -2,10 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../../core/api/api_response.dart';
 import '../../../../core/api/dio_factory.dart';
 import '../../../../core/api/end_points.dart';
-import '../models/register/register_request_body.dart';
-import '../models/register/register_response.dart';
+import '../../../../core/models/user_model.dart';
+import '../models/register_request_body.dart';
 
 part 'register_api_service.g.dart';
 
@@ -20,7 +21,8 @@ abstract class RegisterApiService {
   factory RegisterApiService(Dio dio, {String baseUrl}) = _RegisterApiService;
 
   @POST(EndPoints.register)
-  Future<RegisterResponse> register(
-    @Body() RegisterRequestBody registerRequestBody,
-  );
+  Future<ApiResponse<UserModel>> register(
+    @Body() RegisterRequestBody registerRequestBody, [
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
 }

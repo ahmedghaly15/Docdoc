@@ -20,28 +20,34 @@ class _RegisterApiService implements RegisterApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<RegisterResponse> register(
-    RegisterRequestBody registerRequestBody,
-  ) async {
+  Future<ApiResponse<UserModel>> register(
+    RegisterRequestBody registerRequestBody, [
+    CancelToken? cancelToken,
+  ]) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(registerRequestBody.toJson());
-    final _options = _setStreamType<RegisterResponse>(
+    final _options = _setStreamType<ApiResponse<UserModel>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             'auth/register',
             queryParameters: queryParameters,
             data: _data,
+            cancelToken: cancelToken,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RegisterResponse _value;
+    late ApiResponse<UserModel> _value;
     try {
-      _value = RegisterResponse.fromJson(_result.data!);
+      _value = ApiResponse<UserModel>.fromJson(
+        _result.data!,
+        (json) => UserModel.fromJson(json as Map<String, dynamic>),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

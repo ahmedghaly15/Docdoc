@@ -4,6 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:docdoc/src/core/helpers/extensions.dart';
 
 import '../../../../../../config/router/routes.dart';
+import '../../../../../../core/api/api_response.dart';
+import '../../../../../../core/api/dio_factory.dart';
+import '../../../../../../core/models/user_model.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/widgets/primary_button.dart';
 import '../../../providers/login_provider.dart';
@@ -13,7 +16,15 @@ class LoginConsumerButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(loginProvider, (_, next) => _listener(next, context));
+    final pass = ref.watch(loginPassControllerProvider).text.trim();
+    final email = ref.watch(loginEmailControllerProvider).text.trim();
+    ref.listen(
+        loginProvider,
+        (_, next) => _listener(
+              next: next,
+              context: context,
+              user: UserModel(email: email, password: pass),
+            ));
     return PrimaryButton(
       onPressed: () {
         ref.read(loginProvider.notifier).validateAndLogin();
@@ -22,17 +33,21 @@ class LoginConsumerButton extends ConsumerWidget {
     );
   }
 
-  void _listener(AsyncValue<dynamic>? next, BuildContext context) {
+  void _listener({
+    AsyncValue<ApiResponse<UserModel>>? next,
+    required BuildContext context,
+    required UserModel user,
+  }) {
     next?.whenOrNull(
       loading: () {
         context.unfocusKeyboard();
         context.showLoadingDialog();
       },
-      data: (_) {
+      data: (loginResponse) async {
         context.pop();
-        context.pushReplacementNamed(
-          newRoute: Routes.homeRoute,
-        );
+        final userToken = loginResponse.data!.token!;
+        DioFactory.setTokenIntoHeadersAfterLogin(userToken);
+        await _cacheUserAndGoHome(userToken, user, context);
       },
       error: (error, __) {
         context.pop();
@@ -42,5 +57,17 @@ class LoginConsumerButton extends ConsumerWidget {
         );
       },
     );
+  }
+
+  Future<void> _cacheUserAndGoHome(
+    String token,
+    UserModel user,
+    BuildContext context,
+  ) async {
+    await UserModel.secureUser(
+      userToken: token,
+      user: user,
+    );
+    context.pushReplacementNamed(newRoute: Routes.home);
   }
 }

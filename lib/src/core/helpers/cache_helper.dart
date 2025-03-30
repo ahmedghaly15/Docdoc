@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefHelper {
+class CacheHelper {
   // private constructor as I don't want to allow creating an instance of this class itself.
-  SharedPrefHelper._();
+  CacheHelper._();
 
   /// Removes a value from SharedPreferences with given [key].
   static removeData(String key) async {
@@ -67,7 +67,7 @@ class SharedPrefHelper {
   }
 
   /// Saves a [value] with a [key] in the FlutterSecureStorage.
-  static setSecuredString(String key, String value) async {
+  static Future<void> setSecuredString(String key, String value) async {
     const flutterSecureStorage = FlutterSecureStorage();
     debugPrint(
         "FlutterSecureStorage : setSecuredString with key : $key and value : $value");
@@ -75,7 +75,7 @@ class SharedPrefHelper {
   }
 
   /// Gets an String value from FlutterSecureStorage with given [key].
-  static getSecuredString(String key) async {
+  static Future<String> getSecuredString(String key) async {
     const flutterSecureStorage = FlutterSecureStorage();
     debugPrint('FlutterSecureStorage : getSecuredString with key :');
     return await flutterSecureStorage.read(key: key) ?? '';

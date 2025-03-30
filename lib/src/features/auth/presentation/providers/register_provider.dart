@@ -1,8 +1,13 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../data/models/register/register_request_body.dart';
+import '../../../../core/api/api_response.dart';
+import '../../../../core/models/user_model.dart';
+import '../../data/models/register_request_body.dart';
 import '../../data/repos/register_repo.dart';
 import 'form_notifier_providers.dart';
 
@@ -13,14 +18,6 @@ final registerFormKeyProvider =
   return GlobalKey<FormState>();
 });
 final registerEmailControllerProvider =
-    Provider.autoDispose<TextEditingController>((ref) {
-  return TextEditingController();
-});
-final registerNameControllerProvider =
-    Provider.autoDispose<TextEditingController>((ref) {
-  return TextEditingController();
-});
-final registerPhoneNumberControllerProvider =
     Provider.autoDispose<TextEditingController>((ref) {
   return TextEditingController();
 });
@@ -35,10 +32,6 @@ final registerConfirmPassControllerProvider =
 final registerEmailFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
-final registerPhoneNumberFocusNodeProvider =
-    Provider.autoDispose<FocusNode>((ref) {
-  return FocusNode();
-});
 final registerPassFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
@@ -46,11 +39,19 @@ final registerConfirmPassFocusNodeProvider =
     Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
+final registerPassObscureTextProvider =
+    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
+  (ref) => ObscureTextNotifier(),
+);
+final confirmPassObscureTextProvider =
+    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
+  (ref) => ObscureTextNotifier(),
+);
 
 @riverpod
 class Register extends _$Register {
   @override
-  AsyncValue? build() {
+  AsyncValue<ApiResponse<UserModel>>? build() {
     return null;
   }
 
@@ -58,20 +59,21 @@ class Register extends _$Register {
     state = const AsyncValue.loading();
     final cancelToken = CancelToken();
     ref.onDispose(() => cancelToken.cancel());
-    final result = await ref
-        .read(registerRepoProvider)
-        .register(RegisterRequestBody(
-          name: ref.watch(registerNameControllerProvider).text.trim(),
-          email: ref.watch(registerEmailControllerProvider).text.trim(),
-          phone: ref.watch(registerPhoneNumberControllerProvider).text.trim(),
-          password: ref.watch(registerPassControllerProvider).text,
-          passwordConfirmation: ref.watch(registerPassControllerProvider).text,
-          gender: 0,
-        ));
+    final result = await ref.read(registerRepoProvider).register(
+          RegisterRequestBody(
+            email: ref.watch(registerEmailControllerProvider).text.trim(),
+            password: ref.watch(registerPassControllerProvider).text,
+            passwordConfirmation:
+                ref.watch(registerPassControllerProvider).text,
+            // Note: Used Random() To avoid api errors about used phone
+            phone: Random().nextInt(10000000).toString(),
+          ),
+          cancelToken,
+        );
     result.when(
       success: (registerResponse) => state = AsyncValue.data(registerResponse),
       failure: (error) => state = AsyncValue.error(
-        error.message ?? '',
+        error.getAllErrorMessages,
         StackTrace.empty,
       ),
     );

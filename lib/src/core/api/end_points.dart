@@ -4,4 +4,7 @@ class EndPoints {
   static const String login = '${authUrl}login';
   static const String register = '${authUrl}register';
   static const String specialization = 'specialization/index';
+  static const String user = 'user/';
+  static const String fetchUserProfile = '${user}profile';
+  static const String updateUserProfile = '${user}update';
 }

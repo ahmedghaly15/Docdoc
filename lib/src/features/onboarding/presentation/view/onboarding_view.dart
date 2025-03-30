@@ -5,8 +5,8 @@ import 'package:docdoc/src/core/helpers/extensions.dart';
 
 import '../../../../config/router/routes.dart';
 import '../../../../config/themes/app_text_styles.dart';
-import '../../../../core/helpers/constants.dart';
-import '../../../../core/helpers/shared_pref_helper.dart';
+import '../../../../core/helpers/cache_keys.dart';
+import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/my_sized_box.dart';
 import '../../../../core/widgets/primary_button.dart';
@@ -55,8 +55,8 @@ class OnboardingView extends StatelessWidget {
   }
 
   void _markOnboardingAsVisitedAndGoLogin(BuildContext context) {
-    SharedPrefHelper.setData(SharedPrefKeys.onboarding, true).then((value) {
-      if (value) context.pushReplacementNamed(newRoute: Routes.loginRoute);
+    CacheHelper.setData(CacheKeys.onboarding, true).then((value) {
+      if (value) context.pushReplacementNamed(newRoute: Routes.login);
     });
   }
 }

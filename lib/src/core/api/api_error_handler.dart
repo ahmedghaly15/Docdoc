@@ -13,7 +13,6 @@ class ApiErrorHandler {
         case DioExceptionType.receiveTimeout:
           return const ApiErrorModel(message: ApiErrorMessage.timeoutError);
         case DioExceptionType.badResponse:
-          return _handleError(error);
         case DioExceptionType.unknown:
           return _handleError(error);
         case DioExceptionType.cancel:

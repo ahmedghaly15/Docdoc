@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:docdoc/src/core/api/api_response.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../data/models/login/login_request_body.dart';
+import '../../../../core/models/user_model.dart';
+import '../../data/models/login_request_body.dart';
 import '../../data/repos/login_repo.dart';
 import 'form_notifier_providers.dart';
 
@@ -25,10 +28,15 @@ final loginPassFocusNodeProvider = Provider.autoDispose<FocusNode>((ref) {
   return FocusNode();
 });
 
+final loginPassObscureTextProvider =
+    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
+  (ref) => ObscureTextNotifier(),
+);
+
 @riverpod
 class Login extends _$Login {
   @override
-  AsyncValue? build() {
+  AsyncValue<ApiResponse<UserModel>>? build() {
     return null;
   }
 
@@ -36,14 +44,17 @@ class Login extends _$Login {
     state = const AsyncValue.loading();
     final cancelToken = CancelToken();
     ref.onDispose(() => cancelToken.cancel());
-    final result = await ref.read(loginRepoProvider).login(LoginRequestBody(
-          email: ref.watch(loginEmailControllerProvider).text.trim(),
-          password: ref.watch(loginPassControllerProvider).text,
-        ));
+    final result = await ref.read(loginRepoProvider).login(
+          LoginRequestBody(
+            email: ref.watch(loginEmailControllerProvider).text.trim(),
+            password: ref.watch(loginPassControllerProvider).text,
+          ),
+          cancelToken,
+        );
     result.when(
       success: (loginResponse) => state = AsyncValue.data(loginResponse),
       failure: (error) => state = AsyncValue.error(
-        error.message ?? '',
+        error.getAllErrorMessages,
         StackTrace.empty,
       ),
     );

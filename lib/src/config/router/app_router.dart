@@ -10,25 +10,32 @@ import 'package:docdoc/src/features/home/presentation/cubits/home_cubit.dart';
 import 'package:docdoc/src/features/home/presentation/views/home_view.dart';
 import 'package:docdoc/src/features/onboarding/presentation/view/onboarding_view.dart';
 
+import '../../features/fill_profile/presentation/views/fill_profile_view.dart';
+
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.onboardingRoute:
+      case Routes.onboarding:
         return MaterialPageRoute(
           builder: (_) => const OnboardingView(),
         );
 
-      case Routes.loginRoute:
+      case Routes.login:
         return MaterialPageRoute(
           builder: (_) => const LoginView(),
         );
 
-      case Routes.registerRoute:
+      case Routes.register:
         return MaterialPageRoute(
           builder: (_) => const RegisterView(),
         );
 
-      case Routes.homeRoute:
+      case Routes.fillProfile:
+        return MaterialPageRoute(
+          builder: (_) => const FillProfileView(),
+        );
+
+      case Routes.home:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<HomeCubit>(
             create: (context) => getIt.get<HomeCubit>()..getAllSpecialization(),

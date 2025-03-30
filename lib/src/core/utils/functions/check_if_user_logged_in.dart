@@ -1,11 +1,11 @@
-import 'package:docdoc/src/core/helpers/constants.dart';
 import 'package:docdoc/src/core/helpers/extensions.dart';
-import 'package:docdoc/src/core/helpers/shared_pref_helper.dart';
+
+import '../../models/user_model.dart';
+import '../app_constants.dart';
 
 Future<void> checkIfUserLoggedIn() async {
-  String? userToken =
-      await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
-  if (userToken.isNullOrEmpty) {
+  final user = await UserModel.getSecuredUser();
+  if (user != null && user.token.isNullOrEmpty) {
     isUserLoggedIn = false;
   } else {
     isUserLoggedIn = true;

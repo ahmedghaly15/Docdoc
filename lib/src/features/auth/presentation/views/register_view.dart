@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/utils/app_constants.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../../../core/widgets/my_sized_box.dart';
 import 'widgets/auth_subtitle.dart';
 import 'widgets/auth_title.dart';
 import 'widgets/password_validations.dart';
@@ -19,25 +19,33 @@ class RegisterView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConstants.screenHorizontalPadding,
+          ),
           child: CustomScrollView(
             slivers: [
               const SliverToBoxAdapter(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    AuthTitle(title: AppStrings.createAccount),
-                    AuthSubTitle(
-                      subTitle: AppStrings.registerViewDescription,
-                    ),
-                    MySizedBox.height16,
-                    RegisterForm(),
-                    MySizedBox.height12,
-                    PasswordValidations(),
-                    MySizedBox.height32,
-                    RegisterConsumerButton(),
-                  ],
+                child: AuthTitle(title: AppStrings.createAccount),
+              ),
+              const SliverToBoxAdapter(
+                child: AuthSubTitle(
+                  subTitle: AppStrings.registerViewDescription,
                 ),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  margin: EdgeInsets.only(top: 16.h, bottom: 12.h),
+                  child: const RegisterForm(),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  margin: EdgeInsets.only(bottom: 32.h),
+                  child: const PasswordValidations(),
+                ),
+              ),
+              const SliverToBoxAdapter(
+                child: RegisterConsumerButton(),
               ),
               SliverFillRemaining(
                 hasScrollBody: false,

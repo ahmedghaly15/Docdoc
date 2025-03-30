@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:docdoc/src/core/api/end_points.dart';
-import 'package:docdoc/src/features/auth/data/models/register/register_request_body.dart';
-import 'package:docdoc/src/features/auth/data/models/register/register_response.dart';
 import 'package:docdoc/src/features/home/data/models/get_all_specialization_response.dart';
 import 'package:retrofit/retrofit.dart';
 
