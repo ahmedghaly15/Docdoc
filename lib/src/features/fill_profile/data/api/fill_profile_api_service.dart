@@ -2,9 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../../core/api/api_response.dart';
 import '../../../../core/api/dio_factory.dart';
 import '../../../../core/api/end_points.dart';
-import '../../../auth/data/models/auth_response.dart';
+import '../../../../core/models/user_model.dart';
 import '../../../auth/data/models/register_request_body.dart';
 
 part 'fill_profile_api_service.g.dart';
@@ -19,10 +20,10 @@ abstract class FillProfileApiService {
   factory FillProfileApiService(Dio dio) = _FillProfileApiService;
 
   @GET(EndPoints.fetchUserProfile)
-  Future<List<AuthResponse>> fetchUserProfile();
+  Future<ApiResponse<List<UserModel>>> fetchUserProfile();
 
   @POST(EndPoints.updateUserProfile)
-  Future<AuthResponse> updateProfile(
+  Future<ApiResponse<UserModel>> updateProfile(
     @Body() RegisterRequestBody requestBody,
   );
 }

@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/api/api_response.dart';
 import '../../../../core/api/api_result.dart';
+import '../../../../core/models/user_model.dart';
 import '../../../../core/usecases/api_usecase.dart';
-import '../../../auth/data/models/auth_response.dart';
 import '../../data/repos/fill_profile_repo.dart';
 
 final fetchUserProfileProvider = Provider<FetchUserProfile>((ref) {
@@ -10,13 +11,14 @@ final fetchUserProfileProvider = Provider<FetchUserProfile>((ref) {
   return FetchUserProfile(fillProfileRepo);
 });
 
-class FetchUserProfile implements ApiUseCase<AuthResponse, NoParams> {
+class FetchUserProfile
+    implements ApiUseCase<ApiResponse<List<UserModel>>, NoParams> {
   final FillProfileRepo _fillProfileRepo;
 
   FetchUserProfile(this._fillProfileRepo);
 
   @override
-  Future<ApiResult<AuthResponse>> call(NoParams params) {
+  Future<ApiResult<ApiResponse<List<UserModel>>>> call(NoParams params) {
     return _fillProfileRepo.fetchUserProfile();
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/api/api_response.dart';
 import '../../../../core/api/api_result.dart';
+import '../../../../core/models/user_model.dart';
 import '../../../../core/usecases/api_usecase.dart';
-import '../../../auth/data/models/auth_response.dart';
 import '../../../auth/data/models/register_request_body.dart';
 import '../../data/repos/fill_profile_repo.dart';
 
@@ -11,13 +12,14 @@ final updateProfileProvider = Provider<UpdateProfile>((ref) {
   return UpdateProfile(fillProfileRepo);
 });
 
-class UpdateProfile implements ApiUseCase<AuthResponse, RegisterRequestBody> {
+class UpdateProfile
+    implements ApiUseCase<ApiResponse<UserModel>, RegisterRequestBody> {
   final FillProfileRepo _fillProfileRepo;
 
   UpdateProfile(this._fillProfileRepo);
 
   @override
-  Future<ApiResult<AuthResponse>> call(RegisterRequestBody params) {
+  Future<ApiResult<ApiResponse<UserModel>>> call(RegisterRequestBody params) {
     return _fillProfileRepo.updateProfile(params);
   }
 }

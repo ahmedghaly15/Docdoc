@@ -20,12 +20,12 @@ class _FillProfileApiService implements FillProfileApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<AuthResponse>> fetchUserProfile() async {
+  Future<ApiResponse<List<UserModel>>> fetchUserProfile() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<AuthResponse>>(
+    final _options = _setStreamType<ApiResponse<List<UserModel>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -35,14 +35,19 @@ class _FillProfileApiService implements FillProfileApiService {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<AuthResponse> _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ApiResponse<List<UserModel>> _value;
     try {
-      _value = _result.data!
-          .map(
-            (dynamic i) => AuthResponse.fromJson(i as Map<String, dynamic>),
-          )
-          .toList();
+      _value = ApiResponse<List<UserModel>>.fromJson(
+        _result.data!,
+        (json) => json is List<dynamic>
+            ? json
+                .map<UserModel>(
+                  (i) => UserModel.fromJson(i as Map<String, dynamic>),
+                )
+                .toList()
+            : List.empty(),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -51,13 +56,15 @@ class _FillProfileApiService implements FillProfileApiService {
   }
 
   @override
-  Future<AuthResponse> updateProfile(RegisterRequestBody requestBody) async {
+  Future<ApiResponse<UserModel>> updateProfile(
+    RegisterRequestBody requestBody,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(requestBody.toJson());
-    final _options = _setStreamType<AuthResponse>(
+    final _options = _setStreamType<ApiResponse<UserModel>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -68,9 +75,12 @@ class _FillProfileApiService implements FillProfileApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AuthResponse _value;
+    late ApiResponse<UserModel> _value;
     try {
-      _value = AuthResponse.fromJson(_result.data!);
+      _value = ApiResponse<UserModel>.fromJson(
+        _result.data!,
+        (json) => UserModel.fromJson(json as Map<String, dynamic>),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
