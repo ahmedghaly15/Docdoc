@@ -19,7 +19,7 @@ abstract class FillProfileApiService {
   factory FillProfileApiService(Dio dio) = _FillProfileApiService;
 
   @GET(EndPoints.fetchUserProfile)
-  Future<AuthResponse> fetchUserProfile();
+  Future<List<AuthResponse>> fetchUserProfile();
 
   @POST(EndPoints.updateUserProfile)
   Future<AuthResponse> updateProfile(

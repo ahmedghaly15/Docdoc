@@ -20,12 +20,12 @@ class _FillProfileApiService implements FillProfileApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<AuthResponse> fetchUserProfile() async {
+  Future<List<AuthResponse>> fetchUserProfile() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<AuthResponse>(
+    final _options = _setStreamType<List<AuthResponse>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -35,10 +35,14 @@ class _FillProfileApiService implements FillProfileApiService {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AuthResponse _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<AuthResponse> _value;
     try {
-      _value = AuthResponse.fromJson(_result.data!);
+      _value = _result.data!
+          .map(
+            (dynamic i) => AuthResponse.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

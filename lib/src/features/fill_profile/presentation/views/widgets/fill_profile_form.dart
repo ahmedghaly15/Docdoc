@@ -36,7 +36,10 @@ class FillProfileForm extends ConsumerWidget {
             onEditingComplete: () => context.requestFocus(phoneFocusNode),
           ),
           InternationalPhoneNumberInput(
-            onInputChanged: (phoneNumber) {},
+            onInputChanged: (phoneNumber) {
+              phoneController.text =
+                  '${phoneNumber.isoCode}${phoneNumber.phoneNumber}';
+            },
             textFieldController: phoneController,
             initialValue: PhoneNumber(isoCode: 'EG', dialCode: '20'),
             selectorConfig: const SelectorConfig(
