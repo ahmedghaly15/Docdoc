@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../helpers/cache_helper.dart';
 import '../helpers/cache_keys.dart';
+import '../utils/app_constants.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -26,10 +27,11 @@ class UserModel with _$UserModel {
       _$UserModelFromJson(json);
 
   static Future<void> secureUser({
-    required String userToken,
+    String? userToken,
     required UserModel user,
   }) async {
-    CacheHelper.setSecuredString(
+    currentUser = user.copyWith(token: userToken);
+    await CacheHelper.setSecuredString(
       CacheKeys.user,
       json.encode(user.copyWith(token: userToken).toJson()),
     );

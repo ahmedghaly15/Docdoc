@@ -126,9 +126,10 @@ class __$$ApiErrorModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$ApiErrorModelImpl implements _ApiErrorModel {
+class _$ApiErrorModelImpl extends _ApiErrorModel {
   const _$ApiErrorModelImpl(
-      {this.code, this.message, @JsonKey(name: 'data') this.errors});
+      {this.code, this.message, @JsonKey(name: 'data') this.errors})
+      : super._();
 
   factory _$ApiErrorModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApiErrorModelImplFromJson(json);
@@ -170,11 +171,12 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
       __$$ApiErrorModelImplCopyWithImpl<_$ApiErrorModelImpl>(this, _$identity);
 }
 
-abstract class _ApiErrorModel implements ApiErrorModel {
+abstract class _ApiErrorModel extends ApiErrorModel {
   const factory _ApiErrorModel(
       {final int? code,
       final String? message,
       @JsonKey(name: 'data') final dynamic errors}) = _$ApiErrorModelImpl;
+  const _ApiErrorModel._() : super._();
 
   factory _ApiErrorModel.fromJson(Map<String, dynamic> json) =
       _$ApiErrorModelImpl.fromJson;

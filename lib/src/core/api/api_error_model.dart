@@ -7,6 +7,9 @@ part 'api_error_model.freezed.dart';
 
 @Freezed(toJson: false, fromJson: true)
 class ApiErrorModel with _$ApiErrorModel {
+  // A private constructor to keep _getAllErrorMessages private while keeping getAllErrorMessages accessible.
+  const ApiErrorModel._();
+
   const factory ApiErrorModel({
     int? code,
     String? message,
@@ -17,16 +20,17 @@ class ApiErrorModel with _$ApiErrorModel {
       _$ApiErrorModelFromJson(json);
 
   String get getAllErrorMessages => _getAllErrorMessages();
-
   String _getAllErrorMessages() {
-    if (errors == null || errors is List && (errors as List).isEmpty) {
+    if (errors == null || (errors is List && (errors as List).isEmpty)) {
       return message ?? ApiErrorMessage.defaultError;
     }
 
     if (errors is Map<String, dynamic>) {
       final errorMsg = (errors as Map<String, dynamic>).entries.map((entry) {
         final entryValue = entry.value;
-        return "${entryValue.join(',')}";
+        return entryValue is List
+            ? entryValue.join(',')
+            : entryValue.toString();
       }).join('\n');
       return errorMsg;
     } else if (errors is List) {
@@ -35,3 +39,26 @@ class ApiErrorModel with _$ApiErrorModel {
     return message ?? ApiErrorMessage.defaultError;
   }
 }
+
+// extension ApiErrorModelExtension on ApiErrorModel {
+//   String get getAllErrorMessages => _getAllErrorMessages();
+
+//   String _getAllErrorMessages() {
+//     if (errors == null || (errors is List && (errors as List).isEmpty)) {
+//       return message ?? ApiErrorMessage.defaultError;
+//     }
+
+//     if (errors is Map<String, dynamic>) {
+//       final errorMsg = (errors as Map<String, dynamic>).entries.map((entry) {
+//         final entryValue = entry.value;
+//         return entryValue is List
+//             ? entryValue.join(',')
+//             : entryValue.toString();
+//       }).join('\n');
+//       return errorMsg;
+//     } else if (errors is List) {
+//       return (errors as List).join('\n');
+//     }
+//     return message ?? ApiErrorMessage.defaultError;
+//   }
+// }

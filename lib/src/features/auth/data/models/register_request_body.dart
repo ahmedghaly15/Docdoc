@@ -7,7 +7,7 @@ class RegisterRequestBody {
   final String name;
   final String? email;
   final String? password;
-  final String phone;
+  final String? phone;
   @JsonKey(name: 'password_confirmation')
   final String? passwordConfirmation;
   final String gender;
@@ -17,7 +17,7 @@ class RegisterRequestBody {
     this.email,
     this.password,
     this.passwordConfirmation,
-    this.phone = '1234567890',
+    this.phone,
     this.gender = '0',
   });
 

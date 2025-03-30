@@ -1,7 +1,7 @@
 import 'package:docdoc/src/core/helpers/extensions.dart';
 
-import '../../helpers/cache_keys.dart';
 import '../../models/user_model.dart';
+import '../app_constants.dart';
 
 Future<void> checkIfUserLoggedIn() async {
   final user = await UserModel.getSecuredUser();
