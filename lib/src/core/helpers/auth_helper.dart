@@ -19,10 +19,10 @@ class AuthHelper {
     return null;
   }
 
-  static String? validatePhoneField({String? value}) {
+  static String? validateEgPhoneField({String? value}) {
     if (value == null || value.isEmpty) {
       return "Phone can't be blank!";
-    } else if (!AppRegex.isPhoneNumberValid(value)) {
+    } else if (!AppRegex.isEgPhoneNumberValid(value)) {
       return 'Please enter a valid phone number';
     }
     return null;
