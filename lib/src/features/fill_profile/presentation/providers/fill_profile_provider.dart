@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../core/api/api_response.dart';
 import '../../../../core/models/user_model.dart';
 import '../../../../core/usecases/api_usecase.dart';
-import '../../../auth/data/models/auth_response.dart';
 import '../../../auth/data/models/register_request_body.dart';
 import '../../../auth/presentation/providers/form_notifier_providers.dart';
 import '../../domain/usecases/fetch_user_profile.dart';
@@ -17,10 +17,6 @@ final fillProfileFormKeyProvider =
   return GlobalKey<FormState>();
 });
 final fillProfileNameControllerProvider =
-    Provider.autoDispose<TextEditingController>((ref) {
-  return TextEditingController();
-});
-final fillProfilePhoneControllerProvider =
     Provider.autoDispose<TextEditingController>((ref) {
   return TextEditingController();
 });
@@ -37,26 +33,24 @@ final fillProfileAutovalidateModeProvider = StateNotifierProvider.autoDispose<
   (ref) => AutovalidateModeNotifier(),
 );
 
+final fetchProfileProvider =
+    FutureProvider<ApiResponse<List<UserModel>>>((ref) async {
+  final apiResult =
+      await ref.read(fetchUserProfileProvider).call(const NoParams());
+  return apiResult.when(
+    success: (userProfile) => userProfile,
+    failure: (failure) => throw failure.getAllErrorMessages,
+  );
+});
+
 @riverpod
 class FillProfile extends _$FillProfile {
   @override
-  AsyncValue<AuthResponse>? build() {
-    _fetchProfile();
+  AsyncValue<ApiResponse<UserModel>>? build() {
     return null;
   }
 
-  void _fetchProfile() async {
-    state = const AsyncValue.loading();
-    final result =
-        await ref.read(fetchUserProfileProvider).call(const NoParams());
-    result.when(
-      success: (userProfile) => state = AsyncValue.data(userProfile),
-      failure: (error) => state = AsyncValue.error(
-        error.message ?? '',
-        StackTrace.empty,
-      ),
-    );
-  }
+  String? phoneNumber;
 
   void _updateProfile() async {
     state = const AsyncValue.loading();
@@ -67,7 +61,7 @@ class FillProfile extends _$FillProfile {
           email: user!.email!,
           password: user.password!,
           name: ref.watch(fillProfileNameControllerProvider).text.trim(),
-          phone: ref.watch(fillProfilePhoneControllerProvider).text.trim(),
+          phone: phoneNumber,
           gender: ref.watch(fillProfileGenderControllerProvider).text.trim(),
         ));
     result.when(
