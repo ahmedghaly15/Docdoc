@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../../config/router/routes.dart';
+import '../../../../../../core/api/dio_factory.dart';
 import '../../../../../../core/models/user_model.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/widgets/primary_button.dart';
@@ -44,15 +45,19 @@ class RegisterConsumerButton extends ConsumerWidget {
       },
       data: (registerResponse) {
         context.pop();
+        final userToken = registerResponse.userData!.token!;
         context.showAnimatedDialog(
           state: CustomDialogStates.success,
           message: AppStrings.registerSuccessMsg,
           actionText: AppStrings.continueWord,
-          onAction: () async => await _cacheUserAndGoHome(
-            userToken: registerResponse.userData!.token!,
-            context: context,
-            user: user,
-          ),
+          onAction: () async {
+            DioFactory.setTokenIntoHeadersAfterLogin(userToken);
+            await _cacheUserAndGoFillProfile(
+              userToken: userToken,
+              context: context,
+              user: user,
+            );
+          },
         );
       },
       error: (error, _) {
@@ -65,12 +70,12 @@ class RegisterConsumerButton extends ConsumerWidget {
     );
   }
 
-  Future<void> _cacheUserAndGoHome({
+  Future<void> _cacheUserAndGoFillProfile({
     required String userToken,
     required BuildContext context,
     required UserModel user,
   }) async {
     await UserModel.secureUser(userToken: userToken, user: user);
-    context.pushNamedAndRemoveUntil(newRoute: Routes.home);
+    context.pushNamedAndRemoveUntil(newRoute: Routes.fillProfile);
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:docdoc/src/core/helpers/extensions.dart';
 
 import '../../../../../../config/router/routes.dart';
+import '../../../../../../core/api/dio_factory.dart';
 import '../../../../../../core/models/user_model.dart';
 import '../../../../../../core/utils/app_strings.dart';
 import '../../../../../../core/widgets/primary_button.dart';
@@ -44,7 +45,9 @@ class LoginConsumerButton extends ConsumerWidget {
       },
       data: (loginResponse) async {
         context.pop();
-        await _cacheUserAndGoHome(loginResponse, user, context);
+        final userToken = loginResponse.userData!.token!;
+        DioFactory.setTokenIntoHeadersAfterLogin(userToken);
+        await _cacheUserAndGoHome(userToken, user, context);
       },
       error: (error, __) {
         context.pop();
@@ -57,12 +60,12 @@ class LoginConsumerButton extends ConsumerWidget {
   }
 
   Future<void> _cacheUserAndGoHome(
-    AuthResponse loginResponse,
+    String token,
     UserModel user,
     BuildContext context,
   ) async {
     await UserModel.secureUser(
-      userToken: loginResponse.userData!.token!,
+      userToken: token,
       user: user,
     );
     context.pushReplacementNamed(newRoute: Routes.home);

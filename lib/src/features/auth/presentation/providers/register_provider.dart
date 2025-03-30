@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,13 +64,15 @@ class Register extends _$Register {
             password: ref.watch(registerPassControllerProvider).text,
             passwordConfirmation:
                 ref.watch(registerPassControllerProvider).text,
+            // Used Random() To avoid api errors about used phone
+            phone: Random().nextInt(10000000).toString(),
           ),
           cancelToken,
         );
     result.when(
       success: (registerResponse) => state = AsyncValue.data(registerResponse),
       failure: (error) => state = AsyncValue.error(
-        error.message ?? '',
+        error.getAllErrorMessages,
         StackTrace.empty,
       ),
     );
