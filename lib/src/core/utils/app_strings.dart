@@ -43,4 +43,5 @@ class AppStrings {
   static const String findNearBy = 'Find Nearby';
   static const String doctorSpeciality = 'Doctor Speciality';
   static const String seeAll = 'See All';
+  static const String tryAgain = 'Try again';
 }

@@ -19,5 +19,5 @@ abstract class HomeApiService {
   factory HomeApiService(Dio dio) = _HomeApiService;
 
   @GET(EndPoints.specialization)
-  Future<ApiResponse<List<Specialization>>> getAllSpecialization();
+  Future<ApiResponse<List<Specialization>>> getSpecializations();
 }

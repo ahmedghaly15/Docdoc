@@ -25,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? backgroundColor;
   final Color? textColor;
-  final void Function() onPressed;
+  final VoidCallback? onPressed;
   final List<BoxShadow>? boxShadow;
   final Widget? child;
   final double? width;

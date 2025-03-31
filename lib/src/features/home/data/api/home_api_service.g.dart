@@ -20,7 +20,7 @@ class _HomeApiService implements HomeApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ApiResponse<List<Specialization>>> getAllSpecialization() async {
+  Future<ApiResponse<List<Specialization>>> getSpecializations() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
