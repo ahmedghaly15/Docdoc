@@ -1,9 +1,11 @@
-import 'package:docdoc/src/config/themes/app_colors.dart';
-import 'package:docdoc/src/config/themes/app_text_styles.dart';
-import 'package:docdoc/src/core/utils/app_assets.dart';
-import 'package:docdoc/src/core/widgets/my_sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../config/themes/app_colors.dart';
+import '../../../../../config/themes/app_text_styles.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/app_strings.dart';
+import '../../../../../core/widgets/primary_button.dart';
 
 class FindNearByDoctorBlueContainer extends StatelessWidget {
   const FindNearByDoctorBlueContainer({super.key});
@@ -30,24 +32,23 @@ class FindNearByDoctorBlueContainer extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 16.h,
               children: [
                 Text(
-                  'Book and\nschedule with\nnearest doctor',
+                  AppStrings.bookAndSchedule,
                   style: AppTextStyles.font18WhiteMedium,
                 ),
-                MySizedBox.height16,
                 Expanded(
-                  child: ElevatedButton(
+                  child: PrimaryButton(
                     onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(48.r),
-                      ),
-                      textStyle: AppTextStyles.font12Regular,
-                      foregroundColor: AppColors.primaryColor,
+                    isExpanded: false,
+                    height: 38,
+                    backgroundColor: Colors.white,
+                    borderRadius: 48,
+                    textStyle: AppTextStyles.font12Regular.copyWith(
+                      color: AppColors.primaryColor,
                     ),
-                    child: const Text('Find Nearby'),
+                    text: AppStrings.findNearBy,
                   ),
                 ),
               ],
