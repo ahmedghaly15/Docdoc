@@ -1,29 +1,33 @@
-import 'package:docdoc/src/config/themes/app_colors.dart';
-import 'package:docdoc/src/config/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-class DoctorSpecialitySeeAll extends StatelessWidget {
-  const DoctorSpecialitySeeAll({
-    super.key
+import '../../../../../config/themes/app_text_styles.dart';
+import '../../../../../core/utils/app_strings.dart';
+
+class SeeAllRow extends StatelessWidget {
+  const SeeAllRow({
+    super.key,
+    required this.title,
+    this.onTap,
   });
 
+  final String title;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Doctor Speciality',
+          title,
           style: AppTextStyles.font18SemiBoldDarkBlue,
         ),
-        const Spacer(),
         TextButton(
-          onPressed: (){},
+          onPressed: onTap,
           style: TextButton.styleFrom(
-            foregroundColor: AppColors.primaryColor,
             textStyle: AppTextStyles.font12Regular,
           ),
-          child: const Text('See All'),
+          child: const Text(AppStrings.seeAll),
         ),
       ],
     );

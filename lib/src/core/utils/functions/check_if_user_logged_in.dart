@@ -8,6 +8,7 @@ Future<void> checkIfUserLoggedIn() async {
   if (user != null && user.token.isNullOrEmpty) {
     isUserLoggedIn = false;
   } else {
+    currentUser = user;
     isUserLoggedIn = true;
   }
 }

@@ -36,4 +36,12 @@ class AppStrings {
   static const String gender = 'Gender';
   static const String male = 'Male';
   static const String female = 'Female';
+  static const String hi = 'Hi';
+  static const String howAreYouToday = 'How are you today?';
+  static const String bookAndSchedule =
+      "Book and\nschedule with\nnearest doctor";
+  static const String findNearBy = 'Find Nearby';
+  static const String doctorSpeciality = 'Doctor Speciality';
+  static const String seeAll = 'See All';
+  static const String tryAgain = 'Try again';
 }

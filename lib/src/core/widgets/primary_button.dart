@@ -14,8 +14,10 @@ class PrimaryButton extends StatelessWidget {
     this.textColor,
     this.boxShadow,
     this.child,
-    this.width = double.infinity,
-    this.height = 52,
+    this.width,
+    this.height,
+    this.isExpanded = true,
+    this.padding,
   });
 
   final String? text;
@@ -23,17 +25,19 @@ class PrimaryButton extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? backgroundColor;
   final Color? textColor;
-  final void Function() onPressed;
+  final VoidCallback? onPressed;
   final List<BoxShadow>? boxShadow;
   final Widget? child;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
+  final bool isExpanded;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height.h,
+      width: isExpanded ? double.infinity : width?.w,
+      height: height?.h,
       decoration: BoxDecoration(
         color: backgroundColor ?? AppColors.primaryColor,
         borderRadius:
@@ -46,6 +50,14 @@ class PrimaryButton extends StatelessWidget {
       ),
       child: MaterialButton(
         onPressed: onPressed,
+        padding: height == null
+            ? (padding ?? EdgeInsets.symmetric(vertical: 14.h))
+            : null,
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+        shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadiusDirectional.circular((borderRadius?.r) ?? 16.0.r),
+        ),
         child: child ??
             Text(
               text!,

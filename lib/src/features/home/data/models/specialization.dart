@@ -1,50 +1,36 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'get_all_specialization_response.g.dart';
+part 'specialization.g.dart';
 
-@JsonSerializable()
-class GetAllSpecializationResponse {
-  final String message;
-  final List<GetAllSpecializationData> data;
-
-  const GetAllSpecializationResponse({
-    required this.message,
-    required this.data,
-  });
-
-  factory GetAllSpecializationResponse.fromJson(Map<String, dynamic> json) =>
-      _$GetAllSpecializationResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$GetAllSpecializationResponseToJson(this);
-}
-
-@JsonSerializable()
-class GetAllSpecializationData {
+@JsonSerializable(explicitToJson: true)
+class Specialization {
   final int id;
   final String name;
   final List<Doctor> doctors;
 
-  const GetAllSpecializationData({
+  const Specialization({
     required this.id,
     required this.name,
     required this.doctors,
   });
 
-  factory GetAllSpecializationData.fromJson(Map<String, dynamic> json) =>
-      _$GetAllSpecializationDataFromJson(json);
-  Map<String, dynamic> toJson() => _$GetAllSpecializationDataToJson(this);
+  factory Specialization.fromJson(Map<String, dynamic> json) =>
+      _$SpecializationFromJson(json);
+  Map<String, dynamic> toJson() => _$SpecializationToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Doctor {
   final int id;
   final String name;
   final String email;
   final String phone;
   final String photo;
+  final String gender;
   final String address;
   final String description;
   final String degree;
-  final Specialization specialization;
+  final DoctorSpecialization specialization;
   final City city;
   @JsonKey(name: 'appoint_price')
   final int appointPrice;
@@ -59,6 +45,7 @@ class Doctor {
     required this.email,
     required this.phone,
     required this.photo,
+    required this.gender,
     required this.address,
     required this.description,
     required this.degree,
@@ -74,27 +61,27 @@ class Doctor {
 }
 
 @JsonSerializable()
-class Specialization {
+class DoctorSpecialization {
   final int id;
   final String name;
 
-  const Specialization({
+  const DoctorSpecialization({
     required this.id,
     required this.name,
   });
 
-  factory Specialization.fromJson(Map<String, dynamic> json) =>
-      _$SpecializationFromJson(json);
-  Map<String, dynamic> toJson() => _$SpecializationToJson(this);
+  factory DoctorSpecialization.fromJson(Map<String, dynamic> json) =>
+      _$DoctorSpecializationFromJson(json);
+  Map<String, dynamic> toJson() => _$DoctorSpecializationToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class City {
   final int id;
   final String name;
   final Governrate governrate;
 
-  const City({
+  City({
     required this.id,
     required this.name,
     required this.governrate,
@@ -109,7 +96,7 @@ class Governrate {
   final int id;
   final String name;
 
-  const Governrate({required this.id, required this.name});
+  Governrate({required this.id, required this.name});
 
   factory Governrate.fromJson(Map<String, dynamic> json) =>
       _$GovernrateFromJson(json);
