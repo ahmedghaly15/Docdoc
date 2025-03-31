@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_strings.dart';
-import 'widgets/doctor_speciality_list_view.dart';
+import 'widgets/specializations_list_view_consumer.dart';
 import 'widgets/find_near_by_doctor_blue_container.dart';
 import 'widgets/home_custom_app_bar.dart';
 import 'widgets/recommended_doctors_sliver_list.dart';
@@ -32,9 +32,9 @@ class HomeView extends StatelessWidget {
               ),
               SliverToBoxAdapter(
                 child: Container(
-                  height: 86.h,
+                  height: 100.h,
                   margin: EdgeInsets.only(top: 16.h, bottom: 23.h),
-                  child: const DoctorSpecialityListView(),
+                  child: const SpecializationsListViewConsumer(),
                 ),
               ),
               const RecommendedDoctorsSliverList(),
