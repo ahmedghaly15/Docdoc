@@ -12,7 +12,6 @@ UserModel? currentUser;
 class AppConstants {
   AppConstants._();
 
-  static double screenHorizontalPadding = 30.w;
   static InputDecoration textFormFieldInputDecoration({String? hintText}) {
     return InputDecoration(
       filled: true,
@@ -37,4 +36,7 @@ class AppConstants {
       hintStyle: CustomTextFormField.textStyle,
     );
   }
+
+  static EdgeInsetsGeometry get screenPadding =>
+      EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h);
 }

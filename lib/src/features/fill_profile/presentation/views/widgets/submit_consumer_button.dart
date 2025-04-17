@@ -75,7 +75,7 @@ class SubmitConsumerButton extends ConsumerWidget {
       phone: userData?.phone,
       gender: userData?.gender,
     );
-    await UserModel.secureUser(user: currentUser!);
+    await UserModel.secureUser(currentUser!);
     context.pushReplacementNamed(newRoute: Routes.home);
   }
 }
