@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/user_model.dart';
+import '../utils/app_constants.dart';
 import 'dio_logger_interceptor.dart';
 
 final dioProvider = Provider<Dio>((ref) => DioFactory.getDio());
@@ -13,14 +13,17 @@ class DioFactory {
   static Dio? _dio;
 
   static Dio getDio() {
-    Duration timeOut = const Duration(seconds: 30);
-
+    const Duration timeOut = Duration(seconds: 30);
     if (_dio == null) {
       _dio = Dio();
       _dio!
         ..options.connectTimeout = timeOut
-        ..options.receiveTimeout = timeOut;
-      _addDioHeaders();
+        ..options.receiveTimeout = timeOut
+        ..options.headers = {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${currentUser?.token}',
+        };
+      // _addDioHeaders();
       _addDioLoggerInterceptor();
       return _dio!;
     } else {
@@ -28,15 +31,16 @@ class DioFactory {
     }
   }
 
-  static void _addDioHeaders() async {
-    final user = await UserModel.getSecuredUser();
-    _dio?.options.headers = {
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ${user?.token}',
-    };
-  }
+  // static void _addDioHeaders() async {
+  //   final user = await UserModel.getSecuredUser();
+  //   debugPrint('DIO USER: ${user.toString()}');
+  //   _dio!.options.headers = {
+  //     'Accept': 'application/json',
+  //     'Authorization': 'Bearer ${user!.token}',
+  //   };
+  // }
 
-  static void setTokenIntoHeadersAfterLogin(String token) {
+  static void setTokenIntoHeaders(String token) {
     _dio?.options.headers = {
       'Authorization': 'Bearer $token',
     };

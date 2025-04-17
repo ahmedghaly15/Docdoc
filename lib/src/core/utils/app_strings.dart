@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String fontFamily = 'Inter';
   static const String appTitle = 'DocDoc';
   static const String onboardingTitle = 'Best Doctor\nAppointment App';
   static const String onboardingDescription =
@@ -44,4 +45,5 @@ class AppStrings {
   static const String doctorSpeciality = 'Doctor Speciality';
   static const String seeAll = 'See All';
   static const String tryAgain = 'Try again';
+  static const String recommendedDoctors = 'Recommended Doctors';
 }

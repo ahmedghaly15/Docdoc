@@ -10,4 +10,7 @@ class EndPoints {
   static const String appointment = 'appointment/';
   static const String fetchAppointments = '${appointment}index';
   static const String storeAppointment = '${appointment}store';
+  static const String doctor = 'doctor/';
+  static const String fetchDoctors = '${doctor}index';
+  static const String filterDoctorsByCity = '${doctor}doctor-filter';
 }

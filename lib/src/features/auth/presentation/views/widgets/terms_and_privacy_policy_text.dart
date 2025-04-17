@@ -21,8 +21,8 @@ class TermsAndPrivacyPolicyText extends StatelessWidget {
           ),
           TextSpan(
             text: AppStrings.termsAndConditions,
-            style:
-                AppTextStyles.font12Medium.copyWith(color: AppColors.darkBlue),
+            style: AppTextStyles.font12Medium
+                .copyWith(color: AppColors.color242424),
           ),
           TextSpan(
             text: ' ${AppStrings.and} ',
@@ -32,7 +32,7 @@ class TermsAndPrivacyPolicyText extends StatelessWidget {
           TextSpan(
             text: AppStrings.privacyPolicy,
             style: AppTextStyles.font12Medium.copyWith(
-              color: AppColors.darkBlue,
+              color: AppColors.color242424,
               height: 1.5.h,
             ),
           ),

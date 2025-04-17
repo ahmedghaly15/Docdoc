@@ -16,7 +16,7 @@ class AlreadyHaveAnAcc extends StatelessWidget {
         Text(
           AppStrings.alreadyHaveAcc,
           style: AppTextStyles.font12SemiBold.copyWith(
-            color: AppColors.darkBlue,
+            color: AppColors.color242424,
           ),
         ),
         TextButton(

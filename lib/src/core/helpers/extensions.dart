@@ -110,7 +110,7 @@ extension ShowCustomAnimatedDialog on BuildContext {
                       child: Text(
                         message,
                         style: AppTextStyles.font14Regular.copyWith(
-                          color: AppColors.darkBlue,
+                          color: AppColors.color242424,
                         ),
                         textAlign: TextAlign.center,
                       ),

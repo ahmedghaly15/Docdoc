@@ -18,7 +18,7 @@ class DontHaveAcc extends StatelessWidget {
         Text(
           AppStrings.dontHavAcc,
           style: AppTextStyles.font12SemiBold.copyWith(
-            color: AppColors.darkBlue,
+            color: AppColors.color242424,
           ),
         ),
         TextButton(
