@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
+import '../../features/doctors/presentation/views/recommended_doctors_view.dart';
 import '../../features/fill_profile/presentation/views/fill_profile_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/view/onboarding_view.dart';
@@ -34,6 +35,11 @@ class AppRouter {
       case Routes.home:
         return MaterialPageRoute(
           builder: (_) => const HomeView(),
+        );
+
+      case Routes.recommendedDoctors:
+        return MaterialPageRoute(
+          builder: (_) => const RecommendedDoctorsView(),
         );
 
       default:
