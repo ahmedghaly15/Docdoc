@@ -72,7 +72,7 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
             decoration: hasValidated ? TextDecoration.lineThrough : null,
             decorationColor: Colors.green,
             decorationThickness: 2.w,
-            color: hasValidated ? AppColors.grey : AppColors.darkBlue,
+            color: hasValidated ? AppColors.grey : AppColors.color242424,
           ),
         ),
       ],

@@ -51,9 +51,8 @@ class RegisterConsumerButton extends ConsumerWidget {
           message: AppStrings.registerSuccessMsg,
           actionText: AppStrings.continueWord,
           onAction: () async {
-            DioFactory.setTokenIntoHeadersAfterLogin(userToken);
+            DioFactory.setTokenIntoHeaders(userToken);
             await _cacheUserAndGoFillProfile(
-              userToken: userToken,
               context: context,
               user: user,
             );
@@ -71,11 +70,10 @@ class RegisterConsumerButton extends ConsumerWidget {
   }
 
   Future<void> _cacheUserAndGoFillProfile({
-    required String userToken,
     required BuildContext context,
     required UserModel user,
   }) async {
-    await UserModel.secureUser(userToken: userToken, user: user);
+    await UserModel.secureUser(user);
     context.pushNamedAndRemoveUntil(newRoute: Routes.fillProfile);
   }
 }
