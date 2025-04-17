@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/api/api_response.dart';
-import '../../data/models/specialization.dart';
+import '../../../../core/models/specialization.dart';
 import '../../data/repos/home_repo.dart';
 
 final fetchHomeSpecializationsProvider =

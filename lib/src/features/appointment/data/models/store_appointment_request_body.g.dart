@@ -9,7 +9,7 @@ part of 'store_appointment_request_body.dart';
 StoreAppointmentRequestBody _$StoreAppointmentRequestBodyFromJson(
         Map<String, dynamic> json) =>
     StoreAppointmentRequestBody(
-      doctorId: json['doctor_id'] as int,
+      doctorId: (json['doctor_id'] as num).toInt(),
       startTime: json['start_time'] as String,
       notes: json['notes'] as String,
     );
