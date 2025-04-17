@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/api/api_response.dart';
 import '../../../../core/api/api_result.dart';
 import '../api/home_api_service.dart';
-import '../models/specialization.dart';
+import '../../../../core/models/specialization.dart';
 
 final homeRepoProvider = Provider<HomeRepo>((ref) {
   final homeApiService = ref.watch(homeApiServiceProvider);

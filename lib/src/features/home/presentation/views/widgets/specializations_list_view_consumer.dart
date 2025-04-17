@@ -9,7 +9,7 @@ import '../../../../../config/themes/app_text_styles.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
 import '../../../../../core/widgets/my_sized_box.dart';
-import '../../../data/models/specialization.dart';
+import '../../../../../core/models/specialization.dart';
 import '../../providers/home_provider.dart';
 
 class SpecializationsListViewConsumer extends ConsumerWidget {

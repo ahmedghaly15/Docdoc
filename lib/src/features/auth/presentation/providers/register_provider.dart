@@ -74,7 +74,7 @@ class Register extends _$Register {
       success: (registerResponse) => state = AsyncValue.data(registerResponse),
       failure: (error) => state = AsyncValue.error(
         error.getAllErrorMessages,
-        StackTrace.empty,
+        StackTrace.current,
       ),
     );
   }

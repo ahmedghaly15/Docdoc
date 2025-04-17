@@ -7,4 +7,7 @@ class EndPoints {
   static const String user = 'user/';
   static const String fetchUserProfile = '${user}profile';
   static const String updateUserProfile = '${user}update';
+  static const String appointment = 'appointment/';
+  static const String fetchAppointments = '${appointment}index';
+  static const String storeAppointment = '${appointment}store';
 }

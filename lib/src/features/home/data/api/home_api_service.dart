@@ -5,7 +5,7 @@ import 'package:retrofit/retrofit.dart';
 import '../../../../core/api/api_response.dart';
 import '../../../../core/api/dio_factory.dart';
 import '../../../../core/api/end_points.dart';
-import '../models/specialization.dart';
+import '../../../../core/models/specialization.dart';
 
 part 'home_api_service.g.dart';
 

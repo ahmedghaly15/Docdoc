@@ -6,12 +6,12 @@ part of 'appointment_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appointmentHash() => r'a2c94248f2d1a9d8a21efb1cb5b67e7a5ecb5a7c';
+String _$appointmentHash() => r'19648d72d38b91fada4d876ab90a5d1fe5d6b12f';
 
 /// See also [Appointment].
 @ProviderFor(Appointment)
-final appointmentProvider =
-    AutoDisposeAsyncNotifierProvider<Appointment, ApiResponse<Appointment>>.internal(
+final appointmentProvider = AutoDisposeNotifierProvider<Appointment,
+    AsyncValue<ApiResponse<AppointmentModel>>?>.internal(
   Appointment.new,
   name: r'appointmentProvider',
   debugGetCreateSourceHash:
@@ -20,4 +20,7 @@ final appointmentProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$Appointment = AutoDisposeAsyncNotifier<ApiResponse<Appointment>>;
+typedef _$Appointment
+    = AutoDisposeNotifier<AsyncValue<ApiResponse<AppointmentModel>>?>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
