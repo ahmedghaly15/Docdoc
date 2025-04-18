@@ -6,6 +6,7 @@ import '../../features/doctors/presentation/views/recommended_doctors_view.dart'
 import '../../features/fill_profile/presentation/views/fill_profile_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/view/onboarding_view.dart';
+import '../../features/specializations/presentation/views/specializations_view.dart';
 import '../themes/app_text_styles.dart';
 import 'routes.dart';
 
@@ -40,6 +41,11 @@ class AppRouter {
       case Routes.recommendedDoctors:
         return MaterialPageRoute(
           builder: (_) => const RecommendedDoctorsView(),
+        );
+
+      case Routes.specializations:
+        return MaterialPageRoute(
+          builder: (_) => const SpecializationsView(),
         );
 
       default:
