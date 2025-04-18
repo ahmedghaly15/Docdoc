@@ -18,6 +18,6 @@ final homeApiServiceProvider = Provider<HomeApiService>((ref) {
 abstract class HomeApiService {
   factory HomeApiService(Dio dio) = _HomeApiService;
 
-  @GET(EndPoints.specialization)
-  Future<ApiResponse<List<Specialization>>> getSpecializations();
+  @GET(EndPoints.fetchHomeSpecializations)
+  Future<ApiResponse<List<Specialization>>> fetchHomeSpecializations();
 }

@@ -3,6 +3,7 @@ class EndPoints {
   static const String authUrl = 'auth/';
   static const String login = '${authUrl}login';
   static const String register = '${authUrl}register';
+  static const String fetchHomeSpecializations = 'home/index';
   static const String specialization = 'specialization';
   static const String fetchSpecializations = '$specialization/index';
   static const String user = 'user/';
