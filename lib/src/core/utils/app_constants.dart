@@ -12,7 +12,6 @@ UserModel? currentUser;
 class AppConstants {
   AppConstants._();
 
-  static double screenHorizontalPadding = 30.w;
   static InputDecoration textFormFieldInputDecoration({String? hintText}) {
     return InputDecoration(
       filled: true,
@@ -37,4 +36,19 @@ class AppConstants {
       hintStyle: CustomTextFormField.textStyle,
     );
   }
+
+  static EdgeInsetsGeometry get screenPadding =>
+      EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h);
+
+  static ButtonStyle get iconButtonStyle => IconButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: AppColors.colorEDEDED,
+            width: 1.w,
+          ),
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        foregroundColor: Colors.black,
+        iconSize: 24.h,
+      );
 }

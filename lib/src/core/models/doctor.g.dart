@@ -8,14 +8,14 @@ part of 'doctor.dart';
 
 Doctor _$DoctorFromJson(Map<String, dynamic> json) => Doctor(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      email: json['email'] as String,
-      phone: json['phone'] as String,
-      photo: json['photo'] as String,
-      gender: json['gender'] as String,
-      address: json['address'] as String,
-      description: json['description'] as String,
-      degree: json['degree'] as String,
+      name: json['name'] as String?,
+      email: json['email'] as String?,
+      phone: json['phone'] as String?,
+      photo: json['photo'] as String?,
+      gender: json['gender'] as String?,
+      address: json['address'] as String?,
+      description: json['description'] as String?,
+      degree: json['degree'] as String?,
       specialization: DoctorSpecialization.fromJson(
           json['specialization'] as Map<String, dynamic>),
       city: City.fromJson(json['city'] as Map<String, dynamic>),

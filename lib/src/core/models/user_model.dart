@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:docdoc/src/core/helpers/extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../helpers/cache_helper.dart';
@@ -26,22 +25,16 @@ class UserModel with _$UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 
-  static Future<void> secureUser({
-    String? userToken,
-    required UserModel user,
-  }) async {
-    currentUser = user.copyWith(token: userToken);
+  static Future<void> secureUser(UserModel user) async {
+    currentUser = user;
     await CacheHelper.setSecuredString(
       CacheKeys.user,
-      json.encode(user.copyWith(token: userToken).toJson()),
+      json.encode(user.toJson()),
     );
   }
 
   static Future<UserModel?> getSecuredUser() async {
-    String? cachedUser = await CacheHelper.getSecuredString(CacheKeys.user);
-    if (cachedUser.isNullOrEmpty) {
-      return null;
-    }
+    final cachedUser = await CacheHelper.getSecuredString(CacheKeys.user);
     return UserModel.fromJson(json.decode(cachedUser));
   }
 }

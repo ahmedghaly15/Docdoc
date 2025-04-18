@@ -16,9 +16,10 @@ class HomeRepo {
 
   HomeRepo(this._apiService);
 
-  Future<ApiResult<ApiResponse<List<Specialization>>>> getSpecializations() {
+  Future<ApiResult<ApiResponse<List<Specialization>>>>
+      fetchHomeSpecializations() {
     return executeAndHandleErrors<ApiResponse<List<Specialization>>>(
-      () async => await _apiService.getSpecializations(),
+      () async => await _apiService.fetchHomeSpecializations(),
     );
   }
 }

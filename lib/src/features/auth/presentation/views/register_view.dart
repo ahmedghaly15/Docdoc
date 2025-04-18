@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/app_constants.dart';
 import '../../../../core/utils/app_strings.dart';
 import 'widgets/auth_subtitle.dart';
 import 'widgets/auth_title.dart';
@@ -19,9 +18,7 @@ class RegisterView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppConstants.screenHorizontalPadding,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 30.w),
           child: CustomScrollView(
             slivers: [
               const SliverToBoxAdapter(

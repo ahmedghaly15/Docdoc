@@ -16,3 +16,10 @@ linter:
     - prefer_const_constructors
     - prefer_const_declarations
     - prefer_const_literals_to_create_immutables
+    - prefer_final_locals
+    - always_declare_return_types
+
+custom_lint:
+  rules:
+    - riverpod_missing_override
+    - riverpod_provider_dependencies

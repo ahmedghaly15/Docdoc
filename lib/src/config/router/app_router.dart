@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 
+import '../../core/models/doctor.dart';
+import '../../core/utils/app_constants.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
+import '../../features/doctors/presentation/views/doctor_details_view.dart';
+import '../../features/doctors/presentation/views/recommended_doctors_view.dart';
 import '../../features/fill_profile/presentation/views/fill_profile_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/view/onboarding_view.dart';
+import '../../features/specializations/presentation/views/specializations_view.dart';
 import '../themes/app_text_styles.dart';
 import 'routes.dart';
 
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
+      case '/':
+        return isOnboardingVisited
+            ? (isUserLoggedIn ? _homeRoute() : _loginRoute())
+            : _onboardingRoute();
+
       case Routes.onboarding:
-        return MaterialPageRoute(
-          builder: (_) => const OnboardingView(),
-        );
+        return _onboardingRoute();
 
       case Routes.login:
-        return MaterialPageRoute(
-          builder: (_) => const LoginView(),
-        );
+        return _loginRoute();
 
       case Routes.register:
         return MaterialPageRoute(
@@ -32,13 +38,45 @@ class AppRouter {
         );
 
       case Routes.home:
+        return _homeRoute();
+
+      case Routes.recommendedDoctors:
         return MaterialPageRoute(
-          builder: (_) => const HomeView(),
+          builder: (_) => const RecommendedDoctorsView(),
+        );
+
+      case Routes.specializations:
+        return MaterialPageRoute(
+          builder: (_) => const SpecializationsView(),
+        );
+
+      case Routes.doctorDetails:
+        final doctor = routeSettings.arguments as Doctor;
+        return MaterialPageRoute(
+          builder: (_) => DoctorDetailsView(doctor: doctor),
         );
 
       default:
         return _unFoundRoute();
     }
+  }
+
+  static MaterialPageRoute<dynamic> _homeRoute() {
+    return MaterialPageRoute(
+      builder: (_) => const HomeView(),
+    );
+  }
+
+  static MaterialPageRoute<dynamic> _loginRoute() {
+    return MaterialPageRoute(
+      builder: (_) => const LoginView(),
+    );
+  }
+
+  static MaterialPageRoute<dynamic> _onboardingRoute() {
+    return MaterialPageRoute(
+      builder: (_) => const OnboardingView(),
+    );
   }
 
   static Route<dynamic> _unFoundRoute() {

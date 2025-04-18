@@ -38,6 +38,7 @@ class CustomTextFormField extends StatelessWidget {
     this.autofocus = false,
     this.disabledBorder,
     this.maxLines = 1,
+    this.minLines,
     this.enableSuggestions = true,
     this.filled = true,
   });
@@ -73,6 +74,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextStyle? hintStyle;
   final bool autofocus;
   final int? maxLines;
+  final int? minLines;
   final bool enableSuggestions;
   final bool filled;
 
@@ -96,6 +98,7 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onChanged,
       style: textStyle,
       maxLines: maxLines,
+      minLines: minLines,
       cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
         filled: filled,
@@ -147,7 +150,7 @@ class CustomTextFormField extends StatelessWidget {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(16.r),
       borderSide: BorderSide(
-        color: borderColor ?? AppColors.lightGrey,
+        color: borderColor ?? AppColors.colorEDEDED,
         width: width.w,
       ),
     );

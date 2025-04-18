@@ -15,7 +15,7 @@ class AuthSubTitle extends StatelessWidget {
     return Text(
       subTitle,
       style: AppTextStyles.font14Regular.copyWith(
-        color: AppColors.grey,
+        color: AppColors.color757575,
       ),
     );
   }

@@ -20,7 +20,7 @@ class _HomeApiService implements HomeApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ApiResponse<List<Specialization>>> getSpecializations() async {
+  Future<ApiResponse<List<Specialization>>> fetchHomeSpecializations() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -29,7 +29,7 @@ class _HomeApiService implements HomeApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'specialization/index',
+            'home/index',
             queryParameters: queryParameters,
             data: _data,
           )

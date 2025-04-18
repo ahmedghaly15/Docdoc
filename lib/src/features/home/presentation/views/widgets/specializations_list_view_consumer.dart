@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../../config/themes/app_colors.dart';
-import '../../../../../config/themes/app_text_styles.dart';
-import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
 import '../../../../../core/widgets/my_sized_box.dart';
 import '../../../../../core/models/specialization.dart';
+import '../../../../../core/widgets/specialization_widget.dart';
 import '../../providers/home_provider.dart';
 
 class SpecializationsListViewConsumer extends ConsumerWidget {
@@ -42,26 +37,8 @@ class SpecializationsListView extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: specializations?.length ?? 10,
       physics: const BouncingScrollPhysics(),
-      itemBuilder: (context, index) => Column(
-        spacing: 12.h,
-        children: [
-          Skeleton.leaf(
-            child: CircleAvatar(
-              radius: 28.r,
-              backgroundColor: AppColors.colorF4F8FF,
-              child: SvgPicture.asset(
-                AppAssets.svgsGeneralSpeciality,
-                height: 24.h,
-                width: 24.w,
-              ),
-            ),
-          ),
-          Text(
-            specializations?[index].name ?? 'specializations',
-            style: AppTextStyles.font12DarkBlueRegular,
-          ),
-        ],
-      ),
+      itemBuilder: (context, index) =>
+          SpecializationWidget(specialization: specializations?[index]),
       separatorBuilder: (_, __) => MySizedBox.width24,
     );
   }
