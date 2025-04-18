@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../core/models/doctor.dart';
 import '../../core/utils/app_constants.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
+import '../../features/doctors/presentation/views/doctor_details_view.dart';
 import '../../features/doctors/presentation/views/recommended_doctors_view.dart';
 import '../../features/fill_profile/presentation/views/fill_profile_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
@@ -46,6 +48,12 @@ class AppRouter {
       case Routes.specializations:
         return MaterialPageRoute(
           builder: (_) => const SpecializationsView(),
+        );
+
+      case Routes.doctorDetails:
+        final doctor = routeSettings.arguments as Doctor;
+        return MaterialPageRoute(
+          builder: (_) => DoctorDetailsView(doctor: doctor),
         );
 
       default:

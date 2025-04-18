@@ -1,3 +1,4 @@
+import 'package:family_bottom_sheet/family_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -48,7 +49,7 @@ extension UnfocusKeyboard on BuildContext {
 enum CustomDialogStates { warning, success, error }
 
 extension ShowCustomAnimatedDialog on BuildContext {
-  String _chooseSnackBarTitle(
+  String _dialogTitle(
     CustomDialogStates state,
   ) {
     String title;
@@ -102,7 +103,7 @@ extension ShowCustomAnimatedDialog on BuildContext {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                      _chooseSnackBarTitle(state),
+                      _dialogTitle(state),
                       style: AppTextStyles.font18BoldDarkBlue,
                     ),
                     MySizedBox.height8,
@@ -169,6 +170,34 @@ class _LoadingWidget extends StatelessWidget {
           strokeWidth: 5.w,
         ),
       ),
+    );
+  }
+}
+
+extension ShowModalBottomSheet on BuildContext {
+  Future<void> showModalBottomSheet({
+    required Widget Function(BuildContext) builder,
+  }) async {
+    await FamilyModalSheet.show<void>(
+      context: this,
+      mainContentPadding: EdgeInsets.symmetric(
+        horizontal: 16.w,
+        vertical: 16.h,
+      ),
+      contentBackgroundColor: Colors.white,
+      builder: builder,
+    );
+  }
+}
+
+extension ShowTimePicker on BuildContext {
+  Future<TimeOfDay?> showTimePickerDialog({
+    required TimeOfDay initialTime,
+  }) async {
+    return await showTimePicker(
+      context: this,
+      initialTime: initialTime,
+      helpText: AppStrings.selectTime,
     );
   }
 }
