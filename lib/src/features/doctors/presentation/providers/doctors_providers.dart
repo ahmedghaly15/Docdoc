@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/api/api_response.dart';
@@ -28,4 +29,12 @@ final filteredDoctorsByCityProvider = FutureProvider.autoDispose
     success: (filteredDoctors) => filteredDoctors,
     failure: (failure) => throw failure.getAllErrorMessages,
   );
+});
+
+final pickedTimeProvider =
+    StateProvider.autoDispose<TimeOfDay>((ref) => TimeOfDay.now());
+
+final notesControllerProvider =
+    Provider.autoDispose<TextEditingController>((ref) {
+  return TextEditingController();
 });

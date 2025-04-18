@@ -63,7 +63,7 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
       children: [
         CircleAvatar(
           radius: 2.5.r,
-          backgroundColor: AppColors.grey,
+          backgroundColor: AppColors.color757575,
         ),
         Text(
           //'At least 1 lowercase letter',
@@ -72,7 +72,7 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
             decoration: hasValidated ? TextDecoration.lineThrough : null,
             decorationColor: Colors.green,
             decorationThickness: 2.w,
-            color: hasValidated ? AppColors.grey : AppColors.color242424,
+            color: hasValidated ? AppColors.color757575 : AppColors.color242424,
           ),
         ),
       ],
