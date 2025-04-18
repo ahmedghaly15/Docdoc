@@ -40,7 +40,11 @@ class HomeView extends ConsumerWidget {
                 SliverToBoxAdapter(
                   child: Container(
                     margin: EdgeInsets.only(top: 24.h),
-                    child: const SeeAllRow(title: AppStrings.doctorSpeciality),
+                    child: SeeAllRow(
+                      title: AppStrings.doctorSpeciality,
+                      onTap: () =>
+                          context.pushNamed(routeName: Routes.specializations),
+                    ),
                   ),
                 ),
                 SliverToBoxAdapter(

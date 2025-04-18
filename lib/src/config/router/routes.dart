@@ -5,4 +5,5 @@ class Routes {
   static const String home = '/home';
   static const String fillProfile = '/fill-profile';
   static const String recommendedDoctors = '/recommendedDoctors';
+  static const String specializations = '/specializations';
 }
