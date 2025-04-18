@@ -47,4 +47,15 @@ class AppStrings {
   static const String tryAgain = 'Try again';
   static const String recommendedDoctors = 'Recommended Doctors';
   static const String specializations = 'Specializations';
+  static const String aboutMe = 'About me';
+  static const String workingTime = 'Working Time';
+  static const String appointmentPrice = 'Appointment Price';
+  static const String makeAnAppointment = 'Make an Appointment';
+  static const String startTime = 'Start Time';
+  static const String notes = 'Notes';
+  static const String selectTime = 'Select time';
+  static const String startTimeAppointmentError =
+      'Start time can\'t be right now';
+  static const String appointmentBookedSuccessfully =
+      'Appointment booked successfully!';
 }

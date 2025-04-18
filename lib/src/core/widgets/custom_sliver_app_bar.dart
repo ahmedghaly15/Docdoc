@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:docdoc/src/core/helpers/extensions.dart';
 
-import '../../config/themes/app_colors.dart';
+import '../utils/app_constants.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({
@@ -40,17 +39,7 @@ class ArrowBackIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      style: IconButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: AppColors.colorEDEDED,
-            width: 1.w,
-          ),
-          borderRadius: BorderRadius.circular(10.r),
-        ),
-        foregroundColor: Colors.black,
-        iconSize: 24.h,
-      ),
+      style: AppConstants.iconButtonStyle,
       onPressed: () => context.pop(),
       icon: const Icon(Icons.arrow_back_ios_new),
     );

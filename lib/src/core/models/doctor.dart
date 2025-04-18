@@ -5,14 +5,14 @@ part 'doctor.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Doctor {
   final int id;
-  final String name;
-  final String email;
-  final String phone;
-  final String photo;
-  final String gender;
-  final String address;
-  final String description;
-  final String degree;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? photo;
+  final String? gender;
+  final String? address;
+  final String? description;
+  final String? degree;
   final DoctorSpecialization specialization;
   final City city;
   @JsonKey(name: 'appoint_price')
@@ -24,14 +24,14 @@ class Doctor {
 
   const Doctor({
     required this.id,
-    required this.name,
-    required this.email,
-    required this.phone,
-    required this.photo,
-    required this.gender,
-    required this.address,
-    required this.description,
-    required this.degree,
+    this.name,
+    this.email,
+    this.phone,
+    this.photo,
+    this.gender,
+    this.address,
+    this.description,
+    this.degree,
     required this.specialization,
     required this.city,
     required this.appointPrice,
