@@ -3,7 +3,7 @@ import '../../helpers/cache_keys.dart';
 import '../app_constants.dart';
 
 Future<void> checkIfOnboardingIsVisited() async {
-  bool? onboarding = await CacheHelper.getBool(CacheKeys.onboarding);
+  final onboarding = await CacheHelper.getBool(CacheKeys.onboarding);
   if (onboarding != null) {
     isOnboardingVisited = onboarding;
   } else {

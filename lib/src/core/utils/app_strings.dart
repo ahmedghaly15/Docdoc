@@ -46,4 +46,5 @@ class AppStrings {
   static const String seeAll = 'See All';
   static const String tryAgain = 'Try again';
   static const String recommendedDoctors = 'Recommended Doctors';
+  static const String specializations = 'Specializations';
 }

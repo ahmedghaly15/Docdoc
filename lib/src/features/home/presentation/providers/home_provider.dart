@@ -6,7 +6,8 @@ import '../../data/repos/home_repo.dart';
 
 final fetchHomeSpecializationsProvider =
     FutureProvider<ApiResponse<List<Specialization>>>((ref) async {
-  final apiResponse = await ref.read(homeRepoProvider).getSpecializations();
+  final apiResponse =
+      await ref.read(homeRepoProvider).fetchHomeSpecializations();
   return apiResponse.when(
     success: (specializations) => specializations,
     failure: (failure) => throw failure.getAllErrorMessages,
